@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NARRABRAIN.IO | Agentic Narrative Discovery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Geist+Mono&display=swap" rel="stylesheet">
+    <style>
+        body { color: #71717a; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .mono { font-family: 'Geist Mono', monospace; }
+        .text-logo-blue { color: #06b6d4; }
+        .bg-mesh {
+            background-color: #000000;
+            background-image: 
+                radial-gradient(at 15% 0%, rgba(6, 182, 212, 0.08) 0, transparent 40%), 
+                radial-gradient(at 85% 100%, rgba(59, 130, 246, 0.08) 0, transparent 40%);
+            background-attachment: fixed;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.3)); }
+            50% { filter: drop-shadow(0 0 30px rgba(6, 182, 212, 0.6)); }
+        }
+        .animate-glow { animation: glow 6s ease-in-out infinite; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-mesh selection:bg-cyan-900/30">
+
+    <nav class="p-6 md:p-10 flex justify-between items-center relative z-10">
+        <div class="text-zinc-100 font-semibold tracking-tighter uppercase text-sm">Narrabrain Labs</div>
+        <div class="glass-panel px-4 py-2 rounded-full mono text-[9px] tracking-[0.3em] uppercase text-logo-blue font-bold">
+            Phase I: Discovery Node
+        </div>
+    </nav>
+
+    <main class="flex-grow flex flex-col items-center px-6 py-12 text-center relative z-10">
+        
+        <div class="mb-8">
+            <img src="NB.png" alt="Logo" class="w-48 md:w-64 animate-glow">
+        </div>
+
+        <h1 class="text-zinc-100 text-3xl md:text-5xl font-semibold tracking-tighter leading-tight mb-6 max-w-3xl">
+            Curing Discovery Friction via <span class="text-logo-blue italic">Relational Inference</span>.
+        </h1>
+
+        <p class="text-zinc-400 text-lg md:text-xl font-light mb-12 max-w-2xl leading-relaxed">
+            Narrabrain.io is the <span class="text-white">Creative Interpreter</span> for the stock industry—translating subjective intent into precise semantic signals for high-fidelity asset retrieval.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl w-full mb-24">
+            <div class="glass-panel p-8 rounded-3xl text-left border-l-2 border-l-cyan-500">
+                <span class="mono text-[10px] text-logo-blue font-bold tracking-widest uppercase">The Engine</span>
+                <h2 class="text-white text-xl font-medium mt-2 mb-4">Shared Contextual Logic Core (SCLC)</h2>
+                <p class="text-sm text-zinc-400 leading-relaxed font-light">
+                    [span_6](start_span)Our central computational engine decouples narrative intent discovery from content synthesis[span_6](end_span). [span_7](start_span)[span_8](start_span)By processing visual parameters as metadata-driven relationships, we eliminate the chronological "Temporal Collapse" found in standard vector search[span_7](end_span)[span_8](end_span).
+                </p>
+            </div>
+            <div class="glass-panel p-8 rounded-3xl text-left">
+                <span class="mono text-[10px] text-logo-blue font-bold tracking-widest uppercase">The Graph</span>
+                <h2 class="text-white text-xl font-medium mt-2 mb-4">Universal Relational Inference (URIG)</h2>
+                <p class="text-sm text-zinc-400 leading-relaxed font-light">
+                    [span_9](start_span)A dynamic property graph mapping multidimensional narrative instructions to cinematic pillars[span_9](end_span). [span_10](start_span)[span_11](start_span)We use <strong>Topological Mapping</strong> to tether entity states to specific event nodes, ensuring perfect object-entity persistence[span_10](end_span)[span_11](end_span).
+                </p>
+            </div>
+        </div>
+
+        <div class="glass-panel rounded-3xl p-8 md:p-12 max-w-4xl w-full mb-24 text-left grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="space-y-2">
+                <h3 class="mono text-xs text-zinc-100 font-bold uppercase tracking-widest">N-Logic Extraction</h3>
+                [span_12](start_span)<p class="text-xs text-zinc-500">Automated VLM tagging of legacy stock into structured semantic triples[span_12](end_span).</p>
+            </div>
+            <div class="space-y-2">
+                <h3 class="mono text-xs text-zinc-100 font-bold uppercase tracking-widest">Delta Reinforcement</h3>
+                [span_13](start_span)[span_14](start_span)<p class="text-xs text-zinc-500">A human-in-the-loop "Data Flywheel" that isolates micro-variables to refine engine weights[span_13](end_span)[span_14](end_span).</p>
+            </div>
+            <div class="space-y-2">
+                <h3 class="mono text-xs text-zinc-100 font-bold uppercase tracking-widest">Sovereign Compliance</h3>
+                [span_15](start_span)[span_16](start_span)<p class="text-xs text-zinc-500">Deterministic adherence to 2026 India IT Rules and C2PA provenance standards[span_15](end_span)[span_16](end_span).</p>
+            </div>
+        </div>
+
+        <section class="max-w-md w-full glass-panel p-10 rounded-3xl mb-32">
+            <h3 class="text-zinc-100 text-sm font-semibold mb-8 uppercase tracking-widest">Join the Discovery Beta</h3>
+            <form action="#" class="space-y-6">
+                <input type="email" placeholder="Professional Email" required 
+                    class="w-full bg-black/40 border border-zinc-700 rounded-xl p-4 text-sm text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-cyan-500 transition-all">
+                
+                <button type="submit" class="w-full bg-zinc-100 text-black py-4 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-white hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all">
+                    Apply for Pilot Access
+                </button>
+            </form>
+            <p class="mt-6 text-[10px] text-zinc-500 mono uppercase tracking-tighter">Targeting 20% Referral Commission GTM</p>
+        </section>
+
+    </main>
+
+    <footer class="p-10 border-t border-zinc-900/50 glass-panel">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] mono uppercase tracking-widest">
+            <div class="text-zinc-500">© 2026 Narrabrain Labs / Patent Pending NB-P2</div>
+            <div class="flex gap-8 text-zinc-400">
+                <a href="https://narrabrain.in" class="hover:text-logo-blue">Master Website</a>
+                <a href="mailto:hello@narrabrain.in" class="hover:text-logo-blue lowercase tracking-normal">hello@narrabrain.in</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
