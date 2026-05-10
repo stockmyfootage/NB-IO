@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,7 @@
         body { color: #a1a1aa; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; background: var(--bg); }
         .mono { font-family: 'Geist Mono', monospace; }
         .brand-text { font-family: 'Inter', sans-serif; font-weight: 500; letter-spacing: -0.05em; color: white; }
-        .flow-line { width: 1px; height: 60px; background: linear-gradient(180deg, var(--accent), transparent); margin: 0 auto; }
+        .flow-line { width: 1px; height: 70px; background: linear-gradient(180deg, var(--accent), transparent); margin: 0 auto; }
         .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; margin: 0 auto; box-shadow: 0 0 12px var(--accent); }
         .bg-mesh {
             background-image: 
@@ -52,7 +53,7 @@
         <div class="dot animate-flow"></div>
         <div class="flow-line animate-flow"></div>
 
-        <section class="max-w-3xl mx-auto mb-10">
+        <section class="max-w-3xl mx-auto mb-6">
             <div class="glass-card p-10 rounded-3xl text-center">
                 <span class="mono text-[9px] text-cyan-500 uppercase tracking-widest block mb-4">Stage 01: Ingestion</span>
                 <div class="bg-black/60 border border-zinc-800 p-4 rounded-xl mb-6 text-xs italic text-zinc-500 font-light">
@@ -65,38 +66,39 @@
 
         <div class="flow-line"></div>
 
-        <section class="max-w-5xl mx-auto mb-10 grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="glass-card p-10 rounded-3xl">
-                <span class="mono text-[9px] text-cyan-500 uppercase tracking-widest block mb-4">Stage 02: Interpretation</span>
+        <section class="max-w-3xl mx-auto mb-6">
+            <div class="glass-card p-10 rounded-3xl text-center border-l-2 border-l-cyan-500/30">
+                <span class="mono text-[9px] text-cyan-500 uppercase tracking-widest block mb-4">Stage 02: Interpretation (SCLC)</span>
                 <h3 class="text-white text-lg font-medium mb-3">Contextual Logic Core</h3>
-                <p class="text-xs text-zinc-500 leading-relaxed font-light">
-                    Decoupling subjective intent from content. Our engine maps requests across four cinematic pillars to ensure narrative logic.
+                <p class="text-[11px] text-zinc-500 leading-relaxed font-light">
+                    The reasoning engine that decouples subjective intent from visual content, mapping requests across four distinct cinematic pillars.
                 </p>
             </div>
-            <div class="glass-card p-10 rounded-3xl">
-                <span class="mono text-[9px] text-cyan-500 uppercase tracking-widest block mb-4">Stage 03: Architecture</span>
+        </section>
+
+        <div class="flow-line"></div> <section class="max-w-3xl mx-auto mb-6">
+            <div class="glass-card p-10 rounded-3xl text-center border-r-2 border-r-cyan-500/30">
+                <span class="mono text-[9px] text-cyan-500 uppercase tracking-widest block mb-4">Stage 03: Architecture (URIG)</span>
                 <h3 class="text-white text-lg font-medium mb-3">Inference Graph Traversal</h3>
-                <p class="text-xs text-zinc-500 leading-relaxed font-light">
-                    Utilizing a high-dimensional property graph to maintain entity persistence and logical causality during discovery.
+                <p class="text-[11px] text-zinc-500 leading-relaxed font-light">
+                    Querying a high-dimensional property graph to maintain entity persistence and logical causality during the discovery phase.
                 </p>
             </div>
         </section>
 
         <div class="flow-line"></div>
 
-        <section class="max-w-3xl mx-auto mb-10">
+        <section class="max-w-3xl mx-auto mb-6">
             <div class="glass-card p-10 rounded-3xl text-center border-dashed border-cyan-900/40">
                 <span class="mono text-[9px] text-cyan-500 uppercase tracking-widest block mb-4">Stage 04: Intent Alignment</span>
                 <h3 class="text-white text-lg font-medium mb-4">Narrative Delta Reinforcement</h3>
-                <div class="flex justify-center gap-4 text-[10px] mono text-zinc-400 italic">
+                <div class="flex justify-center gap-4 text-[10px] mono text-zinc-400 italic mb-4">
                     <span>Feedback Ingestion</span>
-                    <span class="text-cyan-600">→</span>
-                    <span>Weight Optimization</span>
                     <span class="text-cyan-600">→</span>
                     <span>Re-Traversal</span>
                 </div>
-                <p class="text-[11px] text-zinc-500 mt-4 leading-relaxed font-light">
-                    A proprietary human-in-the-loop flywheel. Users correct the system, refining the engine's understanding of subtext in real-time.
+                <p class="text-[11px] text-zinc-500 leading-relaxed font-light">
+                    A proprietary human-in-the-loop flywheel allowing users to refine the engine's understanding of subtext through iterative correction.
                 </p>
             </div>
         </section>
@@ -106,7 +108,7 @@
         <section class="max-w-3xl mx-auto mb-10">
             <div class="glass-card p-10 rounded-3xl border-t-2 border-white/5">
                 <span class="mono text-[9px] text-cyan-500 uppercase tracking-widest block mb-4">Stage 05: Fulfillment</span>
-                <h3 class="text-white text-lg font-medium mb-6">Deterministic Matching</h3>
+                <h3 class="text-white text-lg font-medium mb-6 text-center">Deterministic Matching</h3>
                 <div class="grid grid-cols-4 gap-3 mb-8">
                     <div class="bg-zinc-900/40 p-2 rounded-lg text-center">
                         <p class="text-[8px] mono text-zinc-600 uppercase">focal</p>
@@ -125,43 +127,51 @@
                         <p class="text-[10px] text-white">cold</p>
                     </div>
                 </div>
-                <p class="text-[11px] text-zinc-500 italic font-light">Surfacing professional physics metadata as a standard discovery moat.</p>
+                <p class="text-[11px] text-zinc-500 italic font-light text-center">Surfacing professional physics metadata as a standard discovery moat.</p>
             </div>
         </section>
 
         <div class="flow-line"></div>
         <div class="dot animate-flow"></div>
 
-        <section class="max-w-5xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+        <section class="max-w-4xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 px-4">
             <div class="space-y-2">
                 <h4 class="mono text-[9px] text-zinc-500 uppercase tracking-widest">Affiliate Revenue</h4>
-                <p class="text-[11px] text-zinc-600 leading-relaxed font-light">Monetizing funnels via 20% commissions from Pond5 and Adobe Stock.</p>
+                <p class="text-[11px] text-zinc-600 leading-relaxed font-light">Monetizing funnels via referral commissions from premium cinematic libraries.</p>
             </div>
             <div class="space-y-2">
                 <h4 class="mono text-[9px] text-zinc-500 uppercase tracking-widest">Sovereign Compliance</h4>
-                <p class="text-[11px] text-zinc-600 leading-relaxed font-light">Built for the 2026 India IT Rules. Cryptographic provenance and 3-hour takedown windows.</p>
+                <p class="text-[11px] text-zinc-600 leading-relaxed font-light">Native support for the 2026 India IT Rules, cryptographic provenance, and 3-hour takedown windows.</p>
             </div>
         </section>
 
         <section class="max-w-sm mx-auto mt-32 glass-card p-10 rounded-[32px] text-center">
             <h3 class="text-white text-lg font-medium mb-8 lowercase tracking-tight">join the waitlist</h3>
             <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
-                <input type="hidden" name="access_key" value="e1dfdefc-8601-41e0-9abf-b38814bd6205">
+                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
                 <input type="email" name="email" placeholder="professional email" required 
-                    class="w-full bg-black/40 border border-zinc-800 rounded-xl p-4 text-xs text-white focus:border-cyan-500 outline-none transition-all placeholder-zinc-700">
+                    class="w-full bg-black/40 border border-zinc-800 rounded-xl p-4 text-xs text-white focus:border-cyan-500 outline-none transition-all placeholder-zinc-700 text-center">
+                
                 <div class="flex items-start gap-3 text-left px-1">
                     <input type="checkbox" id="legal-consent" name="consent" required class="mt-1 w-3 h-3 rounded bg-black border-zinc-800 checked:bg-cyan-500 transition-all cursor-pointer">
                     <label for="legal-consent" class="text-[9px] text-zinc-500 leading-snug cursor-pointer">
-                        I agree to the <a href="#privacy" class="text-zinc-300 underline">Privacy Policy</a> and <a href="#terms" class="text-zinc-300 underline">Terms of Service</a>.
+                        I agree to the <a href="#privacy" class="text-zinc-300 underline hover:text-cyan-400">Privacy Policy</a> and <a href="#terms" class="text-zinc-300 underline hover:text-cyan-400">Terms of Service</a>.
                     </label>
                 </div>
-                <button type="submit" class="w-full bg-white text-black py-4 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-cyan-400 transition-all">Request Blueprint</button>
+
+                <button type="submit" class="w-full bg-white text-black py-4 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-cyan-400 transition-all">
+                    Request Blueprint
+                </button>
             </form>
         </section>
+
     </main>
 
     <footer class="p-12 border-t border-white/5 glass-card rounded-none text-center">
-        <p class="mono text-[8px] uppercase tracking-[0.5em] text-zinc-700">narrabrain.io / patent pending / mumbai 2026</p>
+        <p class="mono text-[8px] uppercase tracking-[0.5em] text-zinc-700">
+            narrabrain.io / patent pending / mumbai 2026
+        </p>
     </footer>
+
 </body>
 </html>
