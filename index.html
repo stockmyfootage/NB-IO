@@ -11,15 +11,12 @@
         body { color: #a1a1aa; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; background: var(--bg); }
         .mono { font-family: 'Geist Mono', monospace; }
         .brand-text { font-family: 'Inter', sans-serif; font-weight: 500; letter-spacing: -0.05em; color: white; }
-        
         .flow-line { width: 1px; height: 70px; background: linear-gradient(180deg, var(--accent), transparent); margin: 0 auto; }
         .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; margin: 0 auto; box-shadow: 0 0 15px var(--accent); }
-
         .bg-mesh {
             background-image: radial-gradient(at 15% 0%, rgba(6, 182, 212, 0.1) 0, transparent 40%), radial-gradient(at 85% 100%, rgba(59, 130, 246, 0.08) 0, transparent 40%);
             background-attachment: fixed;
         }
-
         .glass-card {
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(12px);
@@ -27,7 +24,6 @@
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .glass-card:hover { border-color: rgba(6, 182, 212, 0.4); }
-
         @keyframes flow-pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.9; } }
         .animate-flow { animation: flow-pulse 4s infinite; }
     </style>
@@ -164,14 +160,12 @@
             <form action="https://api.web3forms.com/submit" method="POST" class="space-y-8">
                 <input type="hidden" name="access_key" value="e1d7e943-3d1f-430c-817b-542e90c2ae1a">
                 <input type="email" name="email" placeholder="professional email" required class="w-full bg-black/60 border border-zinc-800 rounded-2xl p-5 text-sm text-white focus:border-cyan-500 outline-none text-center">
-                
                 <div class="flex items-start gap-4 text-left px-2">
                     <input type="checkbox" id="legal-consent" name="consent" required class="mt-1.5 w-4 h-4 rounded bg-black border-zinc-700 checked:bg-cyan-500 cursor-pointer">
                     <label for="legal-consent" class="text-xs text-zinc-500 leading-normal">
                         I agree to the <a href="/privacy" class="text-zinc-300 underline hover:text-cyan-400 transition-colors">Privacy Policy</a> and <a href="/terms" class="text-zinc-300 underline hover:text-cyan-400 transition-colors">Terms of Service</a>.
                     </label>
                 </div>
-
                 <button type="submit" class="w-full bg-white text-black py-5 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-cyan-400 transition-all">Request Blueprint</button>
             </form>
         </section>
@@ -179,7 +173,7 @@
 
     <footer class="p-16 border-t border-white/10 glass-card rounded-none text-center">
         <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <p class="mono text-xs uppercase tracking-[0.4em] text-zinc-600">narrabrain.io / 2026</p>
+            <p class="mono text-[10px] uppercase tracking-[0.2em] text-cyan-500">© 2026, Narrabrain Labs Pvt Ltd</p>
             <div class="flex flex-wrap justify-center gap-8 mono text-xs uppercase tracking-widest">
                 <a href="mailto:info@narrabrain.io" class="text-zinc-500 hover:text-cyan-400 transition-colors lowercase tracking-normal">info@narrabrain.io</a>
                 <a href="/privacy" class="text-zinc-500 hover:text-cyan-400 transition-colors">Privacy</a>
