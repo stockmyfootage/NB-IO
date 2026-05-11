@@ -12,13 +12,11 @@
         .mono { font-family: 'Geist Mono', monospace; }
         .brand-text { font-family: 'Inter', sans-serif; font-weight: 500; letter-spacing: -0.05em; color: white; }
         
-        .flow-line { width: 1px; height: 80px; background: linear-gradient(180deg, var(--accent), transparent); margin: 0 auto; }
+        .flow-line { width: 1px; height: 70px; background: linear-gradient(180deg, var(--accent), transparent); margin: 0 auto; }
         .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; margin: 0 auto; box-shadow: 0 0 15px var(--accent); }
 
         .bg-mesh {
-            background-image: 
-                radial-gradient(at 15% 0%, rgba(6, 182, 212, 0.1) 0, transparent 40%), 
-                radial-gradient(at 85% 100%, rgba(59, 130, 246, 0.08) 0, transparent 40%);
+            background-image: radial-gradient(at 15% 0%, rgba(6, 182, 212, 0.1) 0, transparent 40%), radial-gradient(at 85% 100%, rgba(59, 130, 246, 0.08) 0, transparent 40%);
             background-attachment: fixed;
         }
 
@@ -74,14 +72,14 @@
                 <span class="mono text-xs text-cyan-500 uppercase tracking-widest block mb-4">Stage 02: Interpretation</span>
                 <h3 class="text-white text-xl font-medium mb-4">Contextual Logic Core (SCLC)</h3>
                 <p class="text-sm md:text-base text-zinc-500 leading-relaxed font-light">
-                    The reasoning engine that decouples subjective intent from visual content, mapping requests across four cinematic pillars.
+                    The reasoning engine that decouples subjective intent from visual content, mapping requests across cinematic pillars.
                 </p>
             </div>
             <div class="glass-card p-10 rounded-[40px] border-r-4 border-r-cyan-500/40">
                 <span class="mono text-xs text-cyan-500 uppercase tracking-widest block mb-4">Stage 03: Architecture</span>
                 <h3 class="text-white text-xl font-medium mb-4">Inference Graph Traversal (URIG)</h3>
                 <p class="text-sm md:text-base text-zinc-500 leading-relaxed font-light">
-                    Querying a high-dimensional property graph to maintain entity persistence and logical causality during discovery.
+                    Querying a high-dimensional property graph to maintain entity persistence and logical causality.
                 </p>
             </div>
         </section>
@@ -95,7 +93,7 @@
                 <div class="flex justify-center items-center gap-6 text-xs md:text-sm mono text-zinc-400 italic mb-6">
                     <span>Feedback Ingestion</span>
                     <span class="text-cyan-600 text-lg">→</span>
-                    <span>Re-Traversal</span>
+                    <span>Weight Optimization</span>
                 </div>
                 <p class="text-sm md:text-base text-zinc-500 leading-relaxed font-light">
                     A proprietary human-in-the-loop flywheel allowing users to refine the engine's understanding through iterative correction.
@@ -122,7 +120,7 @@
                         <p class="text-[10px] mono text-zinc-500 uppercase mb-2">motion</p>
                         <p class="text-base text-white font-medium">kinetic</p>
                     </div>
-                    <div class="bg-zinc-900/60 p-2 md:p-4 rounded-2xl text-center border border-white/5">
+                    <div class="bg-zinc-900/60 p-4 rounded-2xl text-center border border-white/5">
                         <p class="text-[10px] mono text-zinc-500 uppercase mb-2">mood</p>
                         <p class="text-base text-white font-medium">cold</p>
                     </div>
@@ -131,47 +129,63 @@
             </div>
         </section>
 
-        <div class="flow-line"></div>
         <div class="dot animate-flow"></div>
+        <div class="flow-line animate-flow"></div>
 
-        <section class="max-w-4xl mx-auto mt-24 grid grid-cols-1 md:grid-cols-2 gap-16 px-4">
-            <div class="space-y-4">
-                <h4 class="mono text-xs text-zinc-400 uppercase tracking-widest font-bold">Affiliate Revenue</h4>
-                <p class="text-sm md:text-base text-zinc-500 leading-relaxed font-light">Monetizing high-intent funnels via referral commissions from premium cinematic libraries like Pond5 and Adobe Stock.</p>
-            </div>
-            <div class="space-y-4">
-                <h4 class="mono text-xs text-zinc-400 uppercase tracking-widest font-bold">Sovereign Compliance</h4>
-                <p class="text-sm md:text-base text-zinc-500 leading-relaxed font-light">Native adherence to the 2026 India IT Rules, featuring cryptographic provenance and 3-hour takedown windows.</p>
+        <section class="max-w-5xl mx-auto my-32">
+            <div class="glass-card p-10 md:p-16 rounded-[48px] relative overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                    <div>
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-1 h-12 bg-white"></div>
+                            <div>
+                                <h2 class="text-white text-4xl font-semibold tracking-tight">Vibhav Nigam</h2>
+                                <p class="mono text-xs text-cyan-500 uppercase tracking-widest mt-1">Founder & Solo Architect</p>
+                            </div>
+                        </div>
+                        <p class="mono text-[11px] leading-[2] text-zinc-500 uppercase tracking-widest text-left max-w-sm">
+                            Graduate of the Satyajit Ray Film & Television Institute. Jury Award recipient for excellence in editing. Nine years as a post-production specialist across feature films, web series, and commercial media.
+                        </p>
+                    </div>
+                    <div class="flex flex-col justify-center h-full">
+                        <p class="text-white text-xl md:text-2xl font-light italic leading-relaxed text-left border-l border-white/10 pl-8">
+                            "The architecture behind Narrabrain was designed from inside the edit bay — built by someone who spent years translating a director's intent into the exact frame, and who understood precisely why no machine could do what even a junior editor could."
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-16 pt-8 border-t border-white/5 flex justify-between items-center">
+                    <p class="mono text-[10px] text-cyan-500/60 uppercase tracking-[0.2em]">Patent Pending — Provisional Filed, May 2026</p>
+                </div>
             </div>
         </section>
 
-        <section class="max-w-md mx-auto mt-40 glass-card p-12 md:p-16 rounded-[50px] text-center border-t-4 border-t-cyan-500">
+        <section class="max-w-md mx-auto mt-20 glass-card p-12 md:p-16 rounded-[50px] text-center border-t-4 border-t-cyan-500">
             <h3 class="text-white text-2xl font-medium mb-10 lowercase tracking-tight">join the waitlist</h3>
             <form action="https://api.web3forms.com/submit" method="POST" class="space-y-8">
-                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-                <input type="email" name="email" placeholder="professional email" required 
-                    class="w-full bg-black/60 border border-zinc-800 rounded-2xl p-5 text-sm text-white focus:border-cyan-500 outline-none transition-all placeholder-zinc-600 text-center">
+                <input type="hidden" name="access_key" value="e1d7e943-3d1f-430c-817b-542e90c2ae1a">
+                <input type="email" name="email" placeholder="professional email" required class="w-full bg-black/60 border border-zinc-800 rounded-2xl p-5 text-sm text-white focus:border-cyan-500 outline-none text-center">
                 
                 <div class="flex items-start gap-4 text-left px-2">
-                    <input type="checkbox" id="legal-consent" name="consent" required class="mt-1.5 w-4 h-4 rounded bg-black border-zinc-700 checked:bg-cyan-500 transition-all cursor-pointer">
-                    <label for="legal-consent" class="text-xs text-zinc-500 leading-normal cursor-pointer">
-                        I agree to the <a href="#privacy" class="text-zinc-300 underline hover:text-cyan-400">Privacy Policy</a> and <a href="#terms" class="text-zinc-300 underline hover:text-cyan-400">Terms of Service</a>.
+                    <input type="checkbox" id="legal-consent" name="consent" required class="mt-1.5 w-4 h-4 rounded bg-black border-zinc-700 checked:bg-cyan-500 cursor-pointer">
+                    <label for="legal-consent" class="text-xs text-zinc-500 leading-normal">
+                        I agree to the <a href="/privacy" class="text-zinc-300 underline hover:text-cyan-400 transition-colors">Privacy Policy</a> and <a href="/terms" class="text-zinc-300 underline hover:text-cyan-400 transition-colors">Terms of Service</a>.
                     </label>
                 </div>
 
-                <button type="submit" class="w-full bg-white text-black py-5 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-cyan-400 transition-all shadow-xl shadow-cyan-900/20">
-                    Request Blueprint
-                </button>
+                <button type="submit" class="w-full bg-white text-black py-5 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-cyan-400 transition-all">Request Blueprint</button>
             </form>
         </section>
-
     </main>
 
     <footer class="p-16 border-t border-white/10 glass-card rounded-none text-center">
-        <p class="mono text-xs uppercase tracking-[0.4em] text-zinc-600">
-            narrabrain.io / patent pending / mumbai 2026
-        </p>
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <p class="mono text-xs uppercase tracking-[0.4em] text-zinc-600">narrabrain.io / 2026</p>
+            <div class="flex flex-wrap justify-center gap-8 mono text-xs uppercase tracking-widest">
+                <a href="mailto:info@narrabrain.io" class="text-zinc-500 hover:text-cyan-400 transition-colors lowercase tracking-normal">info@narrabrain.io</a>
+                <a href="/privacy" class="text-zinc-500 hover:text-cyan-400 transition-colors">Privacy</a>
+                <a href="/terms" class="text-zinc-500 hover:text-cyan-400 transition-colors">Terms</a>
+            </div>
+        </div>
     </footer>
-
 </body>
 </html>
