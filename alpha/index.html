@@ -5,25 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>narrabrain.studio | alpha gate</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
     <style>
         :root {
             --nv-bg-canvas: #121214;
             --nv-bg-surface: #1E1F22;
-            --nv-bg-element: #2B2D31;
             --nv-text-primary: #E3E5E8;
             --nv-text-muted: #949BA4;
-            --nv-accent-studio: #06b6d4;
         }
-        body { background-color: var(--nv-bg-canvas); color: var(--nv-text-primary); font-family: 'Inter', sans-serif; }
+        body { background-color: var(--nv-bg-canvas); color: var(--nv-text-primary); font-family: system-ui, sans-serif; }
         .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .mono { font-family: 'Inter', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.2em; }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen px-6">
 
-    <div class="w-full max-w-md glass-card p-10 md:p-14 rounded-[32px] text-center">
-        <span class="mono text-[10px] block mb-4 text-cyan-400">Environment Verification</span>
+    <div class="w-full max-w-md glass-card p-10 rounded-[32px] text-center">
+        <span class="text-[10px] uppercase tracking-[0.2em] block mb-4 text-cyan-400 font-mono">Environment Verification</span>
         <h2 class="text-white text-3xl font-medium mb-8 tracking-tight font-serif italic">Alpha Sandbox Gate</h2>
         
         <form id="gate-form" class="space-y-6">
@@ -39,7 +35,8 @@
     </div>
 
     <script>
-        const API_URL = 'YOUR_AWS_API_GATEWAY_ENDPOINT_URL/validate';
+        // Linked directly to your active AWS HTTP Gateway instance
+        const API_URL = 'https://4co4fs4xn5.execute-api.eu-north-1.amazonaws.com/validate';
 
         document.getElementById('gate-form').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -48,7 +45,7 @@
             const submitBtn = document.getElementById('submit-btn');
 
             errorMsg.classList.add('hidden');
-            submitBtn.innerText = "PARSING INTEGRITY...";
+            submitBtn.innerText = "VERIFYING...";
             submitBtn.disabled = true;
 
             try {
@@ -64,11 +61,11 @@
                     throw new Error(data.error || 'Authentication rejected.');
                 }
 
-                // Inject token structure securely into client storage context
+                // Drops the encrypted cloud key securely into browser cache
                 localStorage.setItem('alpha_session_token', data.token);
                 
-                // Redirect straight to dashboard path
-                window.location.href = '/alpha-dashboard';
+                // Advance inside to your private dashboard asset
+                window.location.href = '/alpha-dashboard.html';
 
             } catch (err) {
                 errorMsg.innerText = err.message;
