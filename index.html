@@ -5,44 +5,274 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>narrabrain.io | agentic discovery</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Geist+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=fallback" rel="stylesheet">
     <style>
-        :root { --accent: #06b6d4; --bg: #000000; }
-        body { color: #a1a1aa; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; background: var(--bg); }
-        .mono { font-family: 'Geist Mono', monospace; }
-        .brand-text { font-family: 'Inter', sans-serif; font-weight: 500; letter-spacing: -0.05em; color: white; }
-        .flow-line { width: 1px; height: 70px; background: linear-gradient(180deg, var(--accent), transparent); margin: 0 auto; }
-        .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; margin: 0 auto; box-shadow: 0 0 15px var(--accent); }
-        .bg-mesh {
-            background-image: radial-gradient(at 15% 0%, rgba(6, 182, 212, 0.1) 0, transparent 40%), radial-gradient(at 85% 100%, rgba(59, 130, 246, 0.08) 0, transparent 40%);
-            background-attachment: fixed;
+        /* NDS-V9 Design System Root Variables */
+        :root {
+            /* Color Tokens */
+            --nv-bg-canvas: #121214;
+            --nv-bg-surface: #1E1F22;
+            --nv-bg-element: #2B2D31;
+            --nv-text-primary: #E3E5E8;
+            --nv-text-muted: #949BA4;
+            --nv-accent-brand: #477BFF;
+            --nv-accent-success: #24A19C;
+            --nv-accent-warning: #D18E34;
+            
+            /* Spacing Matrix (8px modular) */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-2xl: 48px;
+            
+            /* Border Radius Scale */
+            --radius-xs: 2px;
+            --radius-sm: 4px;
+            --radius-md: 6px;
+            --radius-lg: 8px;
+            --radius-xl: 12px;
+            --radius-full: 9999px;
         }
+
+        /* Foundation Styles */
+        body {
+            background-color: var(--nv-bg-canvas);
+            color: var(--nv-text-primary);
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Typography Scale */
+        .text-xs { font-size: 10px; line-height: 1.4; letter-spacing: 0.03em; font-family: 'Inter', sans-serif; }
+        .text-sm { font-size: 11px; line-height: 1.5; letter-spacing: 0.05em; font-family: 'Inter', sans-serif; }
+        .text-base { font-size: 12px; line-height: 1.5; letter-spacing: 0.02em; font-family: 'Inter', sans-serif; }
+        .text-md { font-size: 14px; line-height: 1.6; letter-spacing: 0.01em; font-family: 'Inter', sans-serif; }
+        .text-lg { font-size: 16px; line-height: 1.6; letter-spacing: 0; font-family: 'Inter', sans-serif; }
+        .text-xl { font-size: 18px; line-height: 1.5; letter-spacing: 0; font-family: 'Inter', sans-serif; }
+        .text-2xl { font-size: 20px; line-height: 1.4; letter-spacing: -0.01em; font-family: 'Inter', sans-serif; }
+        .text-3xl { font-size: 24px; line-height: 1.2; letter-spacing: -0.02em; font-family: 'Playfair Display', serif; font-weight: 500; }
+        .text-4xl { font-size: 32px; line-height: 1.1; letter-spacing: -0.02em; font-family: 'Playfair Display', serif; font-weight: 500; }
+
+        /* Display Typography - Playfair Display per NDS-V9 */
+        .display-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 500;
+            letter-spacing: -0.05em;
+            color: var(--nv-text-primary);
+        }
+
+        /* Utility Classes */
+        .mono {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        .brand-text {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 500;
+            letter-spacing: -0.05em;
+            color: var(--nv-text-primary);
+        }
+
+        /* Glass Card Component */
         .glass-card {
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .glass-card:hover { border-color: rgba(6, 182, 212, 0.4); }
-        @keyframes flow-pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.9; } }
-        .animate-flow { animation: flow-pulse 4s infinite; }
+
+        .glass-card:hover {
+            border-color: rgba(71, 123, 255, 0.4);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Elevation Shadows */
+        .elevation-0 {
+            box-shadow: none;
+        }
+
+        .elevation-1 {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .elevation-2 {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .elevation-3 {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .elevation-4 {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Flow Animations */
+        .flow-line {
+            width: 1px;
+            height: 70px;
+            background: linear-gradient(180deg, var(--nv-accent-brand), transparent);
+            margin: 0 auto;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--nv-accent-brand);
+            border-radius: var(--radius-full);
+            margin: 0 auto;
+            box-shadow: 0 0 15px var(--nv-accent-brand);
+        }
+
+        @keyframes flow-pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+
+        .animate-flow {
+            animation: flow-pulse 4s infinite;
+        }
+
+        /* Button States */
+        .btn-primary {
+            background-color: var(--nv-accent-brand);
+            color: var(--nv-text-primary);
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #3b63e6;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-primary:active {
+            background-color: #2e4cb8;
+        }
+
+        .btn-primary:disabled {
+            background-color: var(--nv-bg-element);
+            color: var(--nv-text-muted);
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--nv-accent-brand);
+            border: 1px solid var(--nv-accent-brand);
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(71, 123, 255, 0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary:active {
+            background-color: rgba(71, 123, 255, 0.2);
+        }
+
+        /* Background Mesh */
+        .bg-mesh {
+            background-image: 
+                radial-gradient(at 15% 0%, rgba(71, 123, 255, 0.08) 0, transparent 40%),
+                radial-gradient(at 85% 100%, rgba(36, 161, 156, 0.08) 0, transparent 40%);
+            background-attachment: fixed;
+            background-color: var(--nv-bg-canvas);
+        }
+
+        /* Text Input Component */
+        .input-field {
+            background-color: var(--nv-bg-element);
+            border: 1px solid var(--nv-bg-surface);
+            border-radius: var(--radius-lg);
+            color: var(--nv-text-primary);
+            padding: var(--spacing-md);
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--nv-accent-brand);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .input-field::placeholder {
+            color: var(--nv-text-muted);
+        }
+
+        /* Badge Components */
+        .badge-status {
+            background-color: var(--nv-accent-success);
+            color: var(--nv-bg-canvas);
+            font-size: 10px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: var(--radius-md);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-warning {
+            background-color: var(--nv-accent-warning);
+            color: var(--nv-bg-canvas);
+            font-size: 10px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: var(--radius-md);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .text-4xl { font-size: 28px; }
+            .text-3xl { font-size: 22px; }
+        }
     </style>
 </head>
 <body class="bg-mesh">
 
-    <nav class="fixed top-0 w-full z-50 p-6 md:px-12 flex justify-between items-center backdrop-blur-md border-b border-white/10">
-        <div class="brand-text text-xl lowercase">narrabrain.io</div>
-        <div class="glass-card px-5 py-2 rounded-full mono text-xs tracking-[0.2em] uppercase text-cyan-400 font-bold">stealth mode</div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 px-6 md:px-12 py-6 flex justify-between items-center backdrop-blur-md border-b elevation-1" style="border-color: rgba(255, 255, 255, 0.08); background: rgba(18, 18, 20, 0.8);">
+        <div class="brand-text text-lg" style="letter-spacing: -0.05em;">narrabrain.io</div>
+        <div class="glass-card px-5 py-2 rounded-full mono text-xs tracking-widest font-bold" style="color: var(--nv-accent-brand);">stealth mode</div>
     </nav>
 
     <main class="pt-48 pb-20 px-6">
         
+        <!-- Hero Section -->
         <section class="max-w-4xl mx-auto text-center mb-16">
-            <img src="nb-io.png" alt="Logo" class="w-48 mx-auto mb-12 opacity-90">
-            <h1 class="text-white text-5xl md:text-5xl font-medium tracking-tighter leading-tight mb-8">
-                Curing <span class="text-cyan-400 italic">Discovery Friction</span>.
+            <div class="mb-12" style="opacity: 0.9;">
+                <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto" style="margin-bottom: 48px;">
+                    <!-- Simplified Narrabrain Logo Placeholder -->
+                    <circle cx="60" cy="60" r="55" fill="none" stroke="var(--nv-accent-brand)" stroke-width="2" opacity="0.3"/>
+                    <circle cx="60" cy="60" r="40" fill="none" stroke="var(--nv-accent-brand)" stroke-width="1.5" opacity="0.5"/>
+                    <circle cx="60" cy="60" r="25" fill="var(--nv-accent-brand)" opacity="0.8"/>
+                </svg>
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl display-title mb-8" style="font-weight: 500; line-height: 1.2;">
+                Curing <span style="color: var(--nv-accent-brand); font-style: italic;">Discovery Friction</span>.
             </h1>
-            <p class="text-zinc-400 text-xl md:text-2xl font-light max-w-2xl mx-auto leading-relaxed">
+            
+            <p class="text-md md:text-lg" style="color: var(--nv-text-muted); max-width: 560px; margin: 0 auto; line-height: 1.8; font-weight: 300;">
                 A neuro-symbolic bridge between creative intent and verified cinematic assets.
             </p>
         </section>
@@ -50,31 +280,38 @@
         <div class="dot animate-flow"></div>
         <div class="flow-line animate-flow"></div>
 
+        <!-- Stage 01: Ingestion -->
         <section class="max-w-3xl mx-auto mb-8">
-            <div class="glass-card p-10 md:p-12 rounded-[40px] text-center">
-                <span class="mono text-xs text-cyan-500 uppercase tracking-widest block mb-6">Stage 01: Ingestion</span>
-                <div class="bg-black/60 border border-zinc-800 p-6 rounded-2xl mb-8 text-base md:text-lg italic text-zinc-400 font-light">
+            <div class="glass-card p-12 rounded-lg elevation-2" style="border-radius: 24px;">
+                <span class="mono text-xs" style="color: var(--nv-accent-brand); display: block; margin-bottom: 24px; letter-spacing: 0.2em;">Stage 01: Ingestion</span>
+                
+                <div class="elevation-0" style="background: var(--nv-bg-element); border: 1px solid var(--nv-bg-surface); padding: 24px; border-radius: 16px; margin-bottom: 32px; font-style: italic; color: var(--nv-text-muted); font-size: 14px; line-height: 1.6; font-weight: 300;">
                     "A lonely, cinematic wide shot with cold morning light..."
                 </div>
-                <h3 class="text-white text-2xl font-medium mb-3">Latent Intent Analysis</h3>
-                <p class="text-sm md:text-base text-zinc-500 leading-relaxed">Translating unstructured creative briefs into structural signals.</p>
+                
+                <h3 class="text-2xl display-title mb-4" style="font-weight: 500;">Latent Intent Analysis</h3>
+                <p class="text-sm md:text-base" style="color: var(--nv-text-muted); line-height: 1.6;">Translating unstructured creative briefs into structural signals.</p>
             </div>
         </section>
 
         <div class="flow-line"></div>
 
+        <!-- Stage 02 & 03: Interpretation & Architecture -->
         <section class="max-w-5xl mx-auto mb-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="glass-card p-10 rounded-[40px] border-l-4 border-l-cyan-500/40">
-                <span class="mono text-xs text-cyan-500 uppercase tracking-widest block mb-4">Stage 02: Interpretation</span>
-                <h3 class="text-white text-xl font-medium mb-4">Contextual Logic Core (SCLC)</h3>
-                <p class="text-sm md:text-base text-zinc-500 leading-relaxed font-light">
+            <div class="glass-card p-12 rounded-lg elevation-2" style="border-radius: 24px; border-left: 4px solid rgba(71, 123, 255, 0.4);">
+                <span class="mono text-xs" style="color: var(--nv-accent-brand); display: block; margin-bottom: 16px; letter-spacing: 0.2em;">Stage 02: Interpretation</span>
+                
+                <h3 class="text-xl display-title mb-4" style="font-weight: 500;">Contextual Logic Core (SCLC)</h3>
+                <p class="text-sm md:text-base" style="color: var(--nv-text-muted); line-height: 1.6; font-weight: 300;">
                     The reasoning engine that decouples subjective intent from visual content, mapping requests across cinematic pillars.
                 </p>
             </div>
-            <div class="glass-card p-10 rounded-[40px] border-r-4 border-r-cyan-500/40">
-                <span class="mono text-xs text-cyan-500 uppercase tracking-widest block mb-4">Stage 03: Architecture</span>
-                <h3 class="text-white text-xl font-medium mb-4">Inference Graph Traversal (URIG)</h3>
-                <p class="text-sm md:text-base text-zinc-500 leading-relaxed font-light">
+
+            <div class="glass-card p-12 rounded-lg elevation-2" style="border-radius: 24px; border-right: 4px solid rgba(71, 123, 255, 0.4);">
+                <span class="mono text-xs" style="color: var(--nv-accent-brand); display: block; margin-bottom: 16px; letter-spacing: 0.2em;">Stage 03: Architecture</span>
+                
+                <h3 class="text-xl display-title mb-4" style="font-weight: 500;">Inference Graph Traversal (URIG)</h3>
+                <p class="text-sm md:text-base" style="color: var(--nv-text-muted); line-height: 1.6; font-weight: 300;">
                     Querying a high-dimensional property graph to maintain entity persistence and logical causality.
                 </p>
             </div>
@@ -82,16 +319,20 @@
 
         <div class="flow-line"></div>
 
+        <!-- Stage 04: Intent Alignment -->
         <section class="max-w-3xl mx-auto mb-8">
-            <div class="glass-card p-10 md:p-12 rounded-[40px] text-center border-dashed border-cyan-900/60">
-                <span class="mono text-xs text-cyan-500 uppercase tracking-widest block mb-6">Stage 04: Intent Alignment</span>
-                <h3 class="text-white text-2xl font-medium mb-6">Narrative Delta Reinforcement</h3>
-                <div class="flex justify-center items-center gap-6 text-xs md:text-sm mono text-zinc-400 italic mb-6">
+            <div class="glass-card p-12 rounded-lg elevation-2" style="border-radius: 24px; border: 1px dashed rgba(71, 123, 255, 0.3);">
+                <span class="mono text-xs" style="color: var(--nv-accent-brand); display: block; margin-bottom: 24px; text-align: center; letter-spacing: 0.2em;">Stage 04: Intent Alignment</span>
+                
+                <h3 class="text-2xl display-title mb-6 text-center" style="font-weight: 500;">Narrative Delta Reinforcement</h3>
+                
+                <div class="flex justify-center items-center gap-6 text-xs mono mb-6" style="color: var(--nv-text-muted);">
                     <span>Feedback Ingestion</span>
-                    <span class="text-cyan-600 text-lg">→</span>
+                    <span style="color: var(--nv-accent-brand); font-size: 18px;">→</span>
                     <span>Weight Optimization</span>
                 </div>
-                <p class="text-sm md:text-base text-zinc-500 leading-relaxed font-light">
+                
+                <p class="text-sm md:text-base text-center" style="color: var(--nv-text-muted); line-height: 1.6; font-weight: 300;">
                     A proprietary human-in-the-loop flywheel allowing users to refine the engine's understanding through iterative correction.
                 </p>
             </div>
@@ -99,87 +340,137 @@
 
         <div class="flow-line"></div>
 
+        <!-- Stage 05: Fulfillment -->
         <section class="max-w-3xl mx-auto mb-16">
-            <div class="glass-card p-10 md:p-12 rounded-[40px] border-t-4 border-white/10">
-                <span class="mono text-xs text-cyan-500 uppercase tracking-widest block mb-6 text-center">Stage 05: Fulfillment</span>
-                <h3 class="text-white text-2xl font-medium mb-8 text-center">Deterministic Matching</h3>
+            <div class="glass-card p-12 rounded-lg elevation-2" style="border-radius: 24px; border-top: 4px solid rgba(255, 255, 255, 0.1);">
+                <span class="mono text-xs" style="color: var(--nv-accent-brand); display: block; margin-bottom: 24px; text-align: center; letter-spacing: 0.2em;">Stage 05: Fulfillment</span>
+                
+                <h3 class="text-2xl display-title mb-8 text-center" style="font-weight: 500;">Deterministic Matching</h3>
+                
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-                    <div class="bg-zinc-900/60 p-4 rounded-2xl text-center border border-white/5">
-                        <p class="text-[10px] mono text-zinc-500 uppercase mb-2">focal</p>
-                        <p class="text-base text-white font-medium">35mm</p>
+                    <div elevation-1 style="background: var(--nv-bg-element); padding: 16px; border-radius: 16px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);">
+                        <p class="text-xs mono" style="color: var(--nv-text-muted); margin: 0 0 8px 0; letter-spacing: 0.05em;">focal</p>
+                        <p class="text-base display-title" style="margin: 0; font-weight: 500;">35mm</p>
                     </div>
-                    <div class="bg-zinc-900/60 p-4 rounded-2xl text-center border border-white/5">
-                        <p class="text-[10px] mono text-zinc-500 uppercase mb-2">aperture</p>
-                        <p class="text-base text-white font-medium">f/1.8</p>
+                    <div elevation-1 style="background: var(--nv-bg-element); padding: 16px; border-radius: 16px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);">
+                        <p class="text-xs mono" style="color: var(--nv-text-muted); margin: 0 0 8px 0; letter-spacing: 0.05em;">aperture</p>
+                        <p class="text-base display-title" style="margin: 0; font-weight: 500;">f/1.8</p>
                     </div>
-                    <div class="bg-zinc-900/60 p-4 rounded-2xl text-center border border-white/5">
-                        <p class="text-[10px] mono text-zinc-500 uppercase mb-2">motion</p>
-                        <p class="text-base text-white font-medium">kinetic</p>
+                    <div elevation-1 style="background: var(--nv-bg-element); padding: 16px; border-radius: 16px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);">
+                        <p class="text-xs mono" style="color: var(--nv-text-muted); margin: 0 0 8px 0; letter-spacing: 0.05em;">motion</p>
+                        <p class="text-base display-title" style="margin: 0; font-weight: 500;">kinetic</p>
                     </div>
-                    <div class="bg-zinc-900/60 p-4 rounded-2xl text-center border border-white/5">
-                        <p class="text-[10px] mono text-zinc-500 uppercase mb-2">mood</p>
-                        <p class="text-base text-white font-medium">cold</p>
+                    <div elevation-1 style="background: var(--nv-bg-element); padding: 16px; border-radius: 16px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);">
+                        <p class="text-xs mono" style="color: var(--nv-text-muted); margin: 0 0 8px 0; letter-spacing: 0.05em;">mood</p>
+                        <p class="text-base display-title" style="margin: 0; font-weight: 500;">cold</p>
                     </div>
                 </div>
-                <p class="text-sm text-zinc-500 italic font-light text-center">Surfacing professional physics metadata as a standard discovery moat.</p>
+                
+                <p class="text-sm text-center" style="color: var(--nv-text-muted); font-style: italic; font-weight: 300;">Surfacing professional physics metadata as a standard discovery moat.</p>
             </div>
         </section>
 
         <div class="dot animate-flow"></div>
         <div class="flow-line animate-flow"></div>
 
+        <!-- Founder Section -->
         <section class="max-w-5xl mx-auto my-32">
-            <div class="glass-card p-10 md:p-16 rounded-[48px] relative overflow-hidden">
+            <div class="glass-card p-12 md:p-16 rounded-lg elevation-3" style="border-radius: 32px; overflow: hidden;">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                     <div>
                         <div class="flex items-center gap-4 mb-8">
-                            <div class="w-1 h-12 bg-white"></div>
+                            <div style="width: 4px; height: 48px; background: var(--nv-text-primary);"></div>
                             <div>
-                                <h2 class="text-white text-4xl font-semibold tracking-tight">Vibhav Nigam</h2>
-                                <p class="mono text-xs text-cyan-500 uppercase tracking-widest mt-1">Founder & Solo Architect</p>
+                                <h2 class="text-3xl md:text-4xl display-title" style="margin: 0; font-weight: 500; font-size: 28px;">Vibhav Nigam</h2>
+                                <p class="mono text-xs" style="color: var(--nv-accent-brand); margin-top: 8px; letter-spacing: 0.2em;">Founder & Solo Architect</p>
                             </div>
                         </div>
-                        <p class="mono text-[11px] leading-[2] text-zinc-500 uppercase tracking-widest text-left max-w-sm">
+                        <p class="mono text-xs leading-8" style="color: var(--nv-text-muted); margin: 0; max-width: 360px; letter-spacing: 0.1em; line-height: 1.8;">
                             Graduate of the Satyajit Ray Film & Television Institute. Jury Award recipient for excellence in editing. Nine years as a post-production specialist across feature films, web series, and commercial media.
                         </p>
                     </div>
+                    
                     <div class="flex flex-col justify-center h-full">
-                        <p class="text-white text-sm md:text-2xl font-light italic leading-relaxed text-left border-l border-white/10 pl-8">
+                        <p class="text-base md:text-lg display-title" style="font-weight: 300; font-style: italic; line-height: 1.8; border-left: 1px solid rgba(255, 255, 255, 0.1); padding-left: 32px; margin: 0;">
                             "The architecture behind Narrabrain was designed from inside the edit bay — built by someone who spent years translating a director's intent into the exact frame, and who understood precisely why no machine could do what even a junior editor could."
                         </p>
                     </div>
                 </div>
-                <div class="mt-16 pt-8 border-t border-white/5 flex justify-between items-center">
-                    <p class="mono text-[10px] text-cyan-500/60 uppercase tracking-[0.2em]">Patent Pending — Provisional Filed, May 2026</p>
+                
+                <div style="margin-top: 64px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.05); display: flex; justify-content: space-between; align-items: center;">
+                    <p class="mono text-xs" style="color: rgba(71, 123, 255, 0.6); margin: 0; letter-spacing: 0.2em;">Patent Pending — Provisional Filed, May 2026</p>
                 </div>
             </div>
         </section>
 
-        <section class="max-w-md mx-auto mt-20 glass-card p-12 md:p-16 rounded-[50px] text-center border-t-4 border-t-cyan-500">
-            <h3 class="text-white text-2xl font-medium mb-10 lowercase tracking-tight">join the waitlist</h3>
-            <form action="https://api.web3forms.com/submit" method="POST" class="space-y-8">
-                <input type="hidden" name="access_key" value="e1d7e943-3d1f-430c-817b-542e90c2ae1a">
-                <input type="email" name="email" placeholder="professional email" required class="w-full bg-black/60 border border-zinc-800 rounded-2xl p-5 text-sm text-white focus:border-cyan-500 outline-none text-center">
-                <div class="flex items-start gap-4 text-left px-2">
-                    <input type="checkbox" id="legal-consent" name="consent" required class="mt-1.5 w-4 h-4 rounded bg-black border-zinc-700 checked:bg-cyan-500 cursor-pointer">
-                    <label for="legal-consent" class="text-xs text-zinc-500 leading-normal">
-                        I agree to the <a href="/privacy" class="text-zinc-300 underline hover:text-cyan-400 transition-colors">Privacy Policy</a> and <a href="/terms" class="text-zinc-300 underline hover:text-cyan-400 transition-colors">Terms of Service</a>.
-                    </label>
+        <!-- CTA Section with Alpha Test Button -->
+        <section class="max-w-md mx-auto mt-20">
+            <div class="glass-card p-12 md:p-16 rounded-lg elevation-3" style="border-radius: 32px; border-top: 4px solid var(--nv-accent-brand);">
+                <h3 class="text-2xl display-title text-center mb-10" style="font-weight: 500; letter-spacing: -0.02em;">join the waitlist</h3>
+                
+                <form action="https://api.web3forms.com/submit" method="POST" class="space-y-8">
+                    <input type="hidden" name="access_key" value="e1d7e943-3d1f-430c-817b-542e90c2ae1a">
+                    
+                    <input 
+                        type="email" 
+                        name="email" 
+                        placeholder="professional email" 
+                        required 
+                        class="input-field w-full text-center"
+                        style="font-size: 12px;"
+                    >
+                    
+                    <div class="flex items-start gap-4 text-left px-2">
+                        <input 
+                            type="checkbox" 
+                            id="legal-consent" 
+                            name="consent" 
+                            required 
+                            class="mt-2 w-4 h-4 rounded"
+                            style="background-color: var(--nv-bg-element); border: 1px solid var(--nv-bg-surface); accent-color: var(--nv-accent-brand); cursor: pointer; flex-shrink: 0;"
+                        >
+                        <label for="legal-consent" class="text-xs" style="color: var(--nv-text-muted); line-height: 1.6; margin: 0; cursor: pointer;">
+                            I agree to the <a href="/privacy" style="color: var(--nv-text-primary); text-decoration: underline; transition: color 0.3s;">Privacy Policy</a> and <a href="/terms" style="color: var(--nv-text-primary); text-decoration: underline; transition: color 0.3s;">Terms of Service</a>.
+                        </label>
+                    </div>
+                    
+                    <button 
+                        type="submit" 
+                        class="btn-primary w-full py-5 rounded-lg text-xs font-bold uppercase tracking-widest"
+                        style="border-radius: 12px;"
+                    >
+                        Request Blueprint
+                    </button>
+                </form>
+
+                <!-- Alpha Test Button -->
+                <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+                    <a 
+                        href="https://alpha" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-secondary w-full py-4 rounded-lg text-xs font-bold uppercase tracking-widest block text-center"
+                        style="border-radius: 12px; text-decoration: none; transition: all 0.3s;"
+                    >
+                        ✦ Early Access: Alpha Test
+                    </a>
                 </div>
-                <button type="submit" class="w-full bg-white text-black py-5 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-cyan-400 transition-all">Request Blueprint</button>
-            </form>
+            </div>
         </section>
     </main>
 
-    <footer class="p-16 border-t border-white/10 glass-card rounded-none text-center">
+    <!-- Footer -->
+    <footer class="p-12 md:p-16 border-t glass-card rounded-none elevation-1" style="border-color: rgba(255, 255, 255, 0.08); background: rgba(18, 18, 20, 0.4);">
         <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <p class="mono text-[10px] uppercase tracking-[0.2em] text-cyan-500">© 2026, Narrabrain Labs Pvt Ltd</p>
+            <p class="mono text-xs uppercase tracking-widest" style="color: var(--nv-accent-brand); margin: 0;">© 2026, Narrabrain Labs Pvt Ltd</p>
+            
             <div class="flex flex-wrap justify-center gap-8 mono text-xs uppercase tracking-widest">
-                <a href="mailto:info@narrabrain.io" class="text-zinc-500 hover:text-cyan-400 transition-colors lowercase tracking-normal">info@narrabrain.io</a>
-                <a href="/privacy" class="text-zinc-500 hover:text-cyan-400 transition-colors">Privacy</a>
-                <a href="/terms" class="text-zinc-500 hover:text-cyan-400 transition-colors">Terms</a>
+                <a href="mailto:hello@narrabrain.io" class="transition-colors duration-300" style="color: var(--nv-text-muted); text-decoration: none; letter-spacing: 0.1em;">hello@narrabrain.io</a>
+                <a href="/privacy" class="transition-colors duration-300" style="color: var(--nv-text-muted); text-decoration: none; letter-spacing: 0.05em;">Privacy</a>
+                <a href="/terms" class="transition-colors duration-300" style="color: var(--nv-text-muted); text-decoration: none; letter-spacing: 0.05em;">Terms</a>
             </div>
         </div>
     </footer>
+
 </body>
 </html>
