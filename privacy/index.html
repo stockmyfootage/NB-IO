@@ -5,89 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>privacy policy | narrabrain.io</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&family=Geist+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=fallback" rel="stylesheet">
     <style>
-        :root { --accent: #06b6d4; --bg: #000; }
-        body { background: var(--bg); color: #a1a1aa; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
-        .mono { font-family: 'Geist Mono', monospace; }
-    </style>
-</head>
-<body class="p-8 md:p-24">
-    <div class="max-w-3xl mx-auto">
-        <nav class="mb-16">
-            <a href="/" class="text-cyan-500 mono text-xs uppercase tracking-widest hover:text-white transition-colors">← back to narrabrain.io</a>
-        </nav>
+        /* NDS-V9 Design System Root Variables (As blended on Landing Page) */
+        :root {
+            /* Color Tokens */
+            --nv-bg-canvas: #121214;
+            --nv-bg-surface: #1E1F22;
+            --nv-bg-element: #2B2D31;
+            --nv-text-primary: #E3E5E8;
+            --nv-text-muted: #949BA4;
+            --nv-accent-brand: #477BFF;
+            --nv-accent-success: #24A19C;
+            --nv-accent-warning: #D18E34;
+            
+            /* Spacing Matrix */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-2xl: 48px;
+            
+            /* Border Radius Scale */
+            --radius-xs: 2px;
+            --radius-sm: 4px;
+            --radius-md: 6px;
+            --radius-lg: 8px;
+            --radius-xl: 12px;
+            --radius-full: 9999px;
+        }
 
-        <header class="mb-20">
-            <h1 class="text-white text-4xl font-medium tracking-tighter mb-4 lowercase">privacy policy</h1>
-            <p class="mono text-[10px] text-zinc-600 uppercase tracking-[0.3em]">Compliance: DPDP Act (India) | Updated May 2026</p>
-        </header>
+        /* Foundation Styles */
+        body {
+            background-color: var(--nv-bg-canvas);
+            color: var(--nv-text-primary);
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+        }
 
-        <div class="space-y-16 text-sm md:text-base leading-relaxed font-light">
-            <section>
-    <h2 class="text-zinc-200 text-xs font-bold uppercase tracking-widest mb-3 mono">1. Data Fiduciary Identity</h2>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed"><strong class="text-zinc-300 font-medium">Narrabrain Labs Private Limited</strong> (CIN: U63111MH2026PTC471492), operated by Vibhav Nigam (Founder), acts as the Data Fiduciary under the <strong class="text-zinc-300 font-medium">Digital Personal Data Protection (DPDP) Act, 2023</strong>.</p>
-</section>
+        /* Typography Scale */
+        .text-xs { font-size: 10px; line-height: 1.4; letter-spacing: 0.03em; font-family: 'Inter', sans-serif; }
+        .text-sm { font-size: 11px; line-height: 1.5; letter-spacing: 0.05em; font-family: 'Inter', sans-serif; }
+        .text-base { font-size: 12px; line-height: 1.5; letter-spacing: 0.02em; font-family: 'Inter', sans-serif; }
+        .text-md { font-size: 14px; line-height: 1.6; letter-spacing: 0.01em; font-family: 'Inter', sans-serif; }
+        .text-lg { font-size: 16px; line-height: 1.6; letter-spacing: 0; font-family: 'Inter', sans-serif; }
+        .text-xl { font-size: 18px; line-height: 1.5; letter-spacing: 0; font-family: 'Inter', sans-serif; }
+        .text-2xl { font-size: 20px; line-height: 1.4; letter-spacing: -0.01em; font-family: 'Inter', sans-serif; }
+        .text-3xl { font-size: 24px; line-height: 1.2; letter-spacing: -0.02em; font-family: 'Playfair Display', serif; font-weight: 500; }
+        .text-4xl { font-size: 32px; line-height: 1.1; letter-spacing: -0.02em; font-family: 'Playfair Display', serif; font-weight: 500; }
 
-<section>
-    <h2 class="text-zinc-200 text-xs font-bold uppercase tracking-widest mb-3 mono">2. Information Collection & Purpose</h2>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed">We collect your professional email address solely to:</p>
-    <ul class="text-sm md:text-base text-zinc-400 font-light leading-relaxed list-disc list-inside ml-2 mt-2 space-y-2">
-        <li>Provide pilot access to Narrabrain's discovery platform</li>
-        <li>Deliver product updates and feature releases</li>
-        <li>Refine our Narrative Delta Reinforcement Logic (NDRL) through feedback</li>
-        <li>Communicate important platform announcements</li>
-    </ul>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed mt-3">This information is collected with your explicit consent and will not be shared with third parties.</p>
-</section>
+        /* Display Typography */
+        .display-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 500;
+            letter-spacing: -0.05em;
+            color: var(--nv-text-primary);
+        }
 
-<section>
-    <h2 class="text-zinc-200 text-xs font-bold uppercase tracking-widest mb-3 mono">3. Data Localization & Security</h2>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed">Your personal data is primarily stored on secure cloud infrastructure within the Republic of India (Google Workspace). Authorized technical personnel located in the United States and Japan may access system data solely for infrastructure maintenance, debugging, and platform security purposes. All data transfers are encrypted end-to-end.</p>
-</section>
+        /* Utility Classes */
+        .mono {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
 
-<section>
-    <h2 class="text-zinc-200 text-xs font-bold uppercase tracking-widest mb-3 mono">4. Data Retention</h2>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed">We retain your email address for the duration of your pilot program participation. Upon request for erasure or withdrawal of consent, your data will be permanently deleted within 30 days.</p>
-</section>
+        .brand-text {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 500;
+            letter-spacing: -0.05em;
+            color: var(--nv-text-primary);
+        }
 
-<section>
-    <h2 class="text-zinc-200 text-xs font-bold uppercase tracking-widest mb-3 mono">5. Your Rights & Consent Management</h2>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed">Under the DPDP Act, 2023, you have the right to:</p>
-    <ul class="text-sm md:text-base text-zinc-400 font-light leading-relaxed list-disc list-inside ml-2 mt-2 space-y-2">
-        <li>Request access to your personal data</li>
-        <li>Request correction or modification of your data</li>
-        <li>Withdraw your consent and request complete erasure at any time</li>
-        <li>Opt-out of marketing communications while retaining core services</li>
-        <li>Request information about data processing activities</li>
-    </ul>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed mt-3">To exercise these rights, contact us at <a href="mailto:info@narrabrain.io" class="text-cyan-500 hover:text-cyan-400 transition-colors">info@narrabrain.io</a>.</p>
-</section>
-
-<section>
-    <h2 class="text-zinc-200 text-xs font-bold uppercase tracking-widest mb-3 mono">6. AI Transparency & Processing</h2>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed">Your email address may be processed by automated systems for pilot matching and product customization. No automated decision-making with legal or significant effects is performed solely based on your email data. You retain the right to human review of any AI-based processing.</p>
-</section>
-
-<section>
-    <h2 class="text-zinc-200 text-xs font-bold uppercase tracking-widest mb-3 mono">7. Grievance Redressal</h2>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed">For any complaints, queries, or concerns regarding your personal data under DPDP regulations:</p>
-    <ul class="text-sm md:text-base text-zinc-400 font-light leading-relaxed list-disc list-inside ml-2 mt-2 space-y-2">
-        <li><strong class="text-zinc-300">Primary Contact:</strong> <a href="mailto:info@narrabrain.io" class="text-cyan-500 hover:text-cyan-400 transition-colors">info@narrabrain.io</a></li>
-        <li><strong class="text-zinc-300">Grievance Officer:</strong> Vibhav Nigam, Founder — <a href="mailto:founder@narrabrain.in" class="text-cyan-500 hover:text-cyan-400 transition-colors">founder@narrabrain.in</a></li>
-    </ul>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed mt-3">We commit to responding to all grievances within 45 days.</p>
-</section>
-
-<section>
-    <h2 class="text-zinc-200 text-xs font-bold uppercase tracking-widest mb-3 mono">8. Policy Updates</h2>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed">This Privacy Policy was last updated in May 2026 and complies with the Digital Personal Data Protection Act, 2023. Material changes will be communicated to you via email. Your continued use of narrabrain.io constitutes acceptance of the updated policy.</p>
-</section>
-        </div>
-
-        <footer class="mt-32 pt-12 border-t border-white/5 text-center">
-            <p class="mono text-[10px] text-cyan-500 uppercase tracking-widest">© 2026, Narrabrain Labs Pvt Ltd</p>
-        </footer>
-    </div>
-</body>
-</html>
+        /* Glass Card Component */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
