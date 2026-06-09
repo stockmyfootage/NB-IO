@@ -5,108 +5,290 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>terms of service | narrabrain.io</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&family=Geist+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=fallback" rel="stylesheet">
     <style>
-        :root { --accent: #06b6d4; --bg: #000; }
-        body { background: var(--bg); color: #a1a1aa; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
-        .mono { font-family: 'Geist Mono', monospace; }
+        /* NDS-V9 Design System Root Variables (As blended on Landing Page) */
+        :root {
+            /* Color Tokens */
+            --nv-bg-canvas: #121214;
+            --nv-bg-surface: #1E1F22;
+            --nv-bg-element: #2B2D31;
+            --nv-text-primary: #E3E5E8;
+            --nv-text-muted: #949BA4;
+            --nv-accent-brand: #477BFF;
+            --nv-accent-success: #24A19C;
+            --nv-accent-warning: #D18E34;
+            
+            /* Spacing Matrix */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-2xl: 48px;
+            
+            /* Border Radius Scale */
+            --radius-xs: 2px;
+            --radius-sm: 4px;
+            --radius-md: 6px;
+            --radius-lg: 8px;
+            --radius-xl: 12px;
+            --radius-full: 9999px;
+        }
+
+        /* Foundation Styles */
+        body {
+            background-color: var(--nv-bg-canvas);
+            color: var(--nv-text-primary);
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Typography Scale */
+        .text-xs { font-size: 10px; line-height: 1.4; letter-spacing: 0.03em; font-family: 'Inter', sans-serif; }
+        .text-sm { font-size: 11px; line-height: 1.5; letter-spacing: 0.05em; font-family: 'Inter', sans-serif; }
+        .text-base { font-size: 12px; line-height: 1.5; letter-spacing: 0.02em; font-family: 'Inter', sans-serif; }
+        .text-md { font-size: 14px; line-height: 1.6; letter-spacing: 0.01em; font-family: 'Inter', sans-serif; }
+        .text-lg { font-size: 16px; line-height: 1.6; letter-spacing: 0; font-family: 'Inter', sans-serif; }
+        .text-xl { font-size: 18px; line-height: 1.5; letter-spacing: 0; font-family: 'Inter', sans-serif; }
+        .text-2xl { font-size: 20px; line-height: 1.4; letter-spacing: -0.01em; font-family: 'Inter', sans-serif; }
+        .text-3xl { font-size: 24px; line-height: 1.2; letter-spacing: -0.02em; font-family: 'Playfair Display', serif; font-weight: 500; }
+        .text-4xl { font-size: 32px; line-height: 1.1; letter-spacing: -0.02em; font-family: 'Playfair Display', serif; font-weight: 500; }
+
+        /* Display Typography */
+        .display-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 500;
+            letter-spacing: -0.05em;
+            color: var(--nv-text-primary);
+        }
+
+        /* Utility Classes */
+        .mono {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        .brand-text {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 500;
+            letter-spacing: -0.05em;
+            color: var(--nv-text-primary);
+        }
+
+        /* Glass Card Component */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(71, 123, 255, 0.4);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Elevation Shadows */
+        .elevation-0 { box-shadow: none; }
+        .elevation-1 { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); }
+        .elevation-2 { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); }
+        .elevation-3 { box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); }
+        .elevation-4 { box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6); }
+
+        /* Flow Animations */
+        .flow-line {
+            width: 1px;
+            height: 50px;
+            background: linear-gradient(180deg, var(--nv-accent-brand), transparent);
+            margin: 0 auto;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--nv-accent-brand);
+            border-radius: var(--radius-full);
+            margin: 0 auto;
+            box-shadow: 0 0 15px var(--nv-accent-brand);
+        }
+
+        @keyframes flow-pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+
+        .animate-flow {
+            animation: flow-pulse 4s infinite;
+        }
+
+        /* Background Mesh */
+        .bg-mesh {
+            background-image: 
+                radial-gradient(at 15% 0%, rgba(71, 123, 255, 0.08) 0, transparent 40%),
+                radial-gradient(at 85% 100%, rgba(36, 161, 156, 0.08) 0, transparent 40%);
+            background-attachment: fixed;
+            background-color: var(--nv-bg-canvas);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .text-4xl { font-size: 28px; }
+            .text-3xl { font-size: 22px; }
+        }
     </style>
 </head>
-<body class="p-8 md:p-24">
-    <div class="max-w-3xl mx-auto">
-        <nav class="mb-16">
-            <a href="/" class="text-cyan-500 mono text-xs uppercase tracking-widest hover:text-white transition-colors">← back to narrabrain.io</a>
-        </nav>
+<body class="bg-mesh">
 
-        <header class="mb-20">
-            <h1 class="text-white text-4xl font-medium tracking-tighter mb-4 lowercase">terms of service</h1>
-            <p class="mono text-[10px] text-zinc-600 uppercase tracking-[0.3em]">Intermediary Guidelines (India) | Updated May 2026</p>
-        </header>
+    <nav class="fixed top-0 w-full z-50 px-6 md:px-12 py-6 flex justify-between items-center backdrop-blur-md border-b elevation-1" style="border-color: rgba(255, 255, 255, 0.08); background: rgba(18, 18, 20, 0.8);">
+        <a href="/" class="brand-text text-lg" style="letter-spacing: -0.05em; text-decoration: none;">narrabrain.io</a>
+        <a href="/" class="glass-card px-5 py-2 rounded-full mono text-xs tracking-widest font-bold transition-all duration-300 hover:text-white" style="color: var(--nv-accent-brand); text-decoration: none;">
+            ← back to site
+        </a>
+    </nav>
 
-        <div class="space-y-16 text-sm md:text-base leading-relaxed font-light">
-           <section>
-    <h2 class="text-zinc-200 text-xs font-bold uppercase tracking-widest mb-3 mono">1. Acceptance of Terms & Entity</h2>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed">By accessing narrabrain.io, you agree to these Terms of Service issued by <strong class="text-zinc-300 font-medium">Narrabrain Labs Private Limited</strong> (CIN: U63111MH2026PTC471492), operated by Vibhav Nigam (Founder). These terms are governed by Indian law and apply to all users globally. By using this platform, you acknowledge and accept all terms and conditions herein.</p>
-</section>
+    <main class="pt-48 pb-20 px-6">
+        
+        <section class="max-w-4xl mx-auto text-center mb-12">
+            <h1 class="text-4xl md:text-5xl display-title mb-6" style="font-weight: 500; line-height: 1.2; text-transform: lowercase;">
+                terms of service
+            </h1>
+            <p class="mono text-xs" style="color: var(--nv-text-muted); letter-spacing: 0.2em;">
+                Intermediary Guidelines (India) | Updated May 2026
+            </p>
+        </section>
 
-<section>
-    <h2 class="text-zinc-200 text-xs font-bold uppercase tracking-widest mb-3 mono">2. Affiliate Revenue Model & Disclosure</h2>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed">Narrabrain.io operates as an aggregation platform for stock media and creative assets. We receive affiliate referral commissions (typically 15-25%) when you initiate asset purchases through our platform from partner libraries including Shutterstock, Getty Images, Adobe Stock, Pond5, and Envato.</p>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed mt-2"><strong class="text-zinc-300">Transparency:</strong> We do not license content directly. Asset recommendations are based on relevance to your creative intent, not commission rates. Our curation algorithm treats all partners equally. We disclose this model to ensure you understand our business relationship with these platforms.</p>
-</section>
+        <div class="dot animate-flow"></div>
+        <div class="flow-line animate-flow"></div>
 
-<section>
-    <h2 class="text-zinc-200 text-xs font-bold uppercase tracking-widest mb-3 mono">3. User Conduct & Responsibilities</h2>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed">By using narrabrain.io, you agree to:</p>
-    <ul class="text-sm md:text-base text-zinc-400 font-light leading-relaxed list-disc list-inside ml-2 mt-2 space-y-2">
-        <li>Provide accurate professional information</li>
-        <li>Use the platform solely for lawful purposes</li>
-        <li>Not reproduce, distribute, or commercially exploit aggregated content without proper licensing</li>
-        <li>Not attempt to reverse-engineer our Narrative Delta Reinforcement Logic (NDRL)</li>
-        <li>Respect intellectual property rights of all content creators and partners</li>
-        <li>Not use automated tools or bots to scrape our platform</li>
-    </ul>
-</section>
+        <section class="max-w-4xl mx-auto mb-16">
+            <div class="glass-card p-8 md:p-16 rounded-lg elevation-3 space-y-12" style="border-radius: 32px; border-top: 4px solid var(--nv-accent-brand);">
+                
+                <section>
+                    <h2 class="mono text-xs mb-4" style="color: var(--nv-accent-brand); letter-spacing: 0.15em;">1. Acceptance of Terms & Entity</h2>
+                    <p class="text-sm md:text-base" style="color: var(--nv-text-muted); line-height: 1.8; font-weight: 300;">
+                        By accessing narrabrain.io, you agree to these Terms of Service issued by <strong style="color: var(--nv-text-primary); font-weight: 500;">Narrabrain Labs Private Limited</strong> (CIN: U63111MH2026PTC471492), operated by Vibhav Nigam (Founder). These terms are governed by Indian law and apply to all users globally. By using this platform, you acknowledge and accept all terms and conditions herein.
+                    </p>
+                </section>
 
-<section>
-    <h2 class="text-zinc-200 text-xs font-bold uppercase tracking-widest mb-3 mono">4. Intermediary Status & Content Moderation (IT Rules 2021)</h2>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed">Narrabrain Labs complies with the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021. In our capacity as an intermediary platform:</p>
-    <ul class="text-sm md:text-base text-zinc-400 font-light leading-relaxed list-disc list-inside ml-2 mt-2 space-y-2">
-        <li>We maintain a 3-hour response window for government-mandated takedowns of flagged or unlawful content</li>
-        <li>We do not moderate content created by third parties (partner libraries), but we will act on specific government requests</li>
-        <li>We prohibit: illegal content, deepfakes, hate speech, harassment, misinformation, and copyright violations</li>
-        <li>Users may report violations via our Grievance Officer with supporting evidence</li>
-    </ul>
-</section>
+                <section>
+                    <h2 class="mono text-xs mb-4" style="color: var(--nv-accent-brand); letter-spacing: 0.15em;">2. Affiliate Revenue Model & Disclosure</h2>
+                    <p class="text-sm md:text-base mb-4" style="color: var(--nv-text-muted); line-height: 1.8; font-weight: 300;">
+                        Narrabrain.io operates as an aggregation platform for stock media and creative assets. We receive affiliate referral commissions (typically 15-25%) when you initiate asset purchases through our platform from partner libraries including Shutterstock, Getty Images, Adobe Stock, Pond5, and Envato.
+                    </p>
+                    <p class="text-sm md:text-base" style="color: var(--nv-text-muted); line-height: 1.8; font-weight: 300;">
+                        <strong style="color: var(--nv-text-primary); font-weight: 500;">Transparency:</strong> We do not license content directly. Asset recommendations are based on relevance to your creative intent, not commission rates. Our curation algorithm treats all partners equally. We disclose this model to ensure you understand our business relationship with these platforms.
+                    </p>
+                </section>
 
-<section>
-    <h2 class="text-zinc-200 text-xs font-bold uppercase tracking-widest mb-3 mono">5. Third-Party Content & Liability Disclaimer</h2>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed">Narrabrain.io aggregates content from partner platforms but does not own or create the assets. We are not responsible for:</p>
-    <ul class="text-sm md:text-base text-zinc-400 font-light leading-relaxed list-disc list-inside ml-2 mt-2 space-y-2">
-        <li>Quality, accuracy, or legality of third-party content</li>
-        <li>Licensing disputes between you and content creators</li>
-        <li>Copyright infringement claims arising from your use of assets</li>
-        <li>Service interruptions or data loss</li>
-        <li>Indirect, incidental, or consequential damages from platform use</li>
-    </ul>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed mt-2">You assume all risk when purchasing or using assets through our platform. Always verify licensing rights with original creators.</p>
-</section>
+                <section>
+                    <h2 class="mono text-xs mb-4" style="color: var(--nv-accent-brand); letter-spacing: 0.15em;">3. User Conduct & Responsibilities</h2>
+                    <p class="text-sm md:text-base mb-3" style="color: var(--nv-text-muted); line-height: 1.8; font-weight: 300;">
+                        By using narrabrain.io, you agree to:
+                    </p>
+                    <ul class="text-sm md:text-base list-disc list-inside space-y-2 pl-2" style="color: var(--nv-text-muted); line-height: 1.8; font-weight: 300;">
+                        <li>Provide accurate professional information</li>
+                        <li>Use the platform solely for lawful purposes</li>
+                        <li>Not reproduce, distribute, or commercially exploit aggregated content without proper licensing</li>
+                        <li>Not attempt to reverse-engineer our Narrative Delta Reinforcement Logic (NDRL)</li>
+                        <li>Respect intellectual property rights of all content creators and partners</li>
+                        <li>Not use automated tools or bots to scrape our platform</li>
+                    </ul>
+                </section>
 
-<section>
-    <h2 class="text-zinc-200 text-xs font-bold uppercase tracking-widest mb-3 mono">6. Intellectual Property</h2>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed">Our proprietary technology, including the <strong class="text-zinc-300 font-medium">SCLC Engine</strong>, <strong class="text-zinc-300 font-medium">NDRL</strong>, and algorithms, are protected intellectual property. You may not:</p>
-    <ul class="text-sm md:text-base text-zinc-400 font-light leading-relaxed list-disc list-inside ml-2 mt-2 space-y-2">
-        <li>Reverse-engineer, decompile, or extract our proprietary logic</li>
-        <li>Create competitive systems based on our architecture</li>
-        <li>Copy or distribute our documentation without permission</li>
-    </ul>
-</section>
+                <section>
+                    <h2 class="mono text-xs mb-4" style="color: var(--nv-accent-brand); letter-spacing: 0.15em;">4. Intermediary Status & Content Moderation (IT Rules 2021)</h2>
+                    <p class="text-sm md:text-base mb-3" style="color: var(--nv-text-muted); line-height: 1.8; font-weight: 300;">
+                        Narrabrain Labs complies with the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021. In our capacity as an intermediary platform:
+                    </p>
+                    <ul class="text-sm md:text-base list-disc list-inside space-y-2 pl-2" style="color: var(--nv-text-muted); line-height: 1.8; font-weight: 300;">
+                        <li>We maintain a 3-hour response window for government-mandated takedowns of flagged or unlawful content</li>
+                        <li>We do not moderate content created by third parties (partner libraries), but we will act on specific government requests</li>
+                        <li>We prohibit: illegal content, deepfakes, hate speech, harassment, misinformation, and copyright violations</li>
+                        <li>Users may report violations via our Grievance Officer with supporting evidence</li>
+                    </ul>
+                </section>
 
-<section>
-    <h2 class="text-zinc-200 text-xs font-bold uppercase tracking-widest mb-3 mono">7. Service Availability & Modifications</h2>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed">Narrabrain.io is provided "as-is" without guarantees of availability or uptime. We reserve the right to modify, suspend, or discontinue features with reasonable notice. Material changes to these terms will be communicated via email at least 30 days in advance.</p>
-</section>
+                <section>
+                    <h2 class="mono text-xs mb-4" style="color: var(--nv-accent-brand); letter-spacing: 0.15em;">5. Third-Party Content & Liability Disclaimer</h2>
+                    <p class="text-sm md:text-base mb-3" style="color: var(--nv-text-muted); line-height: 1.8; font-weight: 300;">
+                        Narrabrain.io aggregates content from partner platforms but does not own or create the assets. We are not responsible for:
+                    </p>
+                    <ul class="text-sm md:text-base list-disc list-inside space-y-2 pl-2" style="color: var(--nv-text-muted); line-height: 1.8; font-weight: 300;">
+                        <li>Quality, accuracy, or legality of third-party content</li>
+                        <li>Licensing disputes between you and content creators</li>
+                        <li>Copyright infringement claims arising from your use of assets</li>
+                        <li>Service interruptions or data loss</li>
+                        <li>Indirect, incidental, or consequential damages from platform use</li>
+                    </ul>
+                    <p class="text-sm md:text-base mt-4" style="color: var(--nv-text-muted); line-height: 1.8; font-weight: 300;">
+                        You assume all risk when purchasing or using assets through our platform. Always verify licensing rights with original creators.
+                    </p>
+                </section>
 
-<section>
-    <h2 class="text-zinc-200 text-xs font-bold uppercase tracking-widest mb-3 mono">8. Grievance Redressal Officer</h2>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed">For complaints, copyright claims, or content moderation requests under IT Rules 2021:</p>
-    <ul class="text-sm md:text-base text-zinc-400 font-light leading-relaxed list-disc list-inside ml-2 mt-2 space-y-2">
-        <li><strong class="text-zinc-300">Grievance Officer:</strong> Vibhav Nigam, Founder</li>
-        <li><strong class="text-zinc-300">Email:</strong> <a href="mailto:info@narrabrain.io" class="text-cyan-500 hover:text-cyan-400 transition-colors">info@narrabrain.io</a></li>
-        <li><strong class="text-zinc-300">Subject Line:</strong> [GRIEVANCE REDRESSAL]</li>
-        <li><strong class="text-zinc-300">Response Time:</strong> We commit to reviewing all complaints within 5 business days</li>
-    </ul>
-</section>
+                <section>
+                    <h2 class="mono text-xs mb-4" style="color: var(--nv-accent-brand); letter-spacing: 0.15em;">6. Intellectual Property</h2>
+                    <p class="text-sm md:text-base mb-3" style="color: var(--nv-text-muted); line-height: 1.8; font-weight: 300;">
+                        Our proprietary technology, including the <strong style="color: var(--nv-text-primary); font-weight: 500;">SCLC Engine</strong>, <strong style="color: var(--nv-text-primary); font-weight: 500;">NDRL</strong>, and algorithms, are protected intellectual property. You may not:
+                    </p>
+                    <ul class="text-sm md:text-base list-disc list-inside space-y-2 pl-2" style="color: var(--nv-text-muted); line-height: 1.8; font-weight: 300;">
+                        <li>Reverse-engineer, decompile, or extract our proprietary logic</li>
+                        <li>Create competitive systems based on our architecture</li>
+                        <li>Copy or distribute our documentation without permission</li>
+                    </ul>
+                </section>
 
-<section>
-    <h2 class="text-zinc-200 text-xs font-bold uppercase tracking-widest mb-3 mono">9. Dispute Resolution & Governing Law</h2>
-    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed">These Terms are governed by the laws of India. Any disputes shall be resolved through binding arbitration under the Arbitration and Conciliation Act, 1996, with proceedings conducted in Mumbai. Both parties agree to arbitration as the sole remedy.</p>
-</section>
+                <section>
+                    <h2 class="mono text-xs mb-4" style="color: var(--nv-accent-brand); letter-spacing: 0.15em;">7. Service Availability & Modifications</h2>
+                    <p class="text-sm md:text-base" style="color: var(--nv-text-muted); line-height: 1.8; font-weight: 300;">
+                        Narrabrain.io is provided "as-is" without guarantees of availability or uptime. We reserve the right to modify, suspend, or discontinue features with reasonable notice. Material changes to these terms will be communicated via email at least 30 days in advance.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 class="mono text-xs mb-4" style="color: var(--nv-accent-brand); letter-spacing: 0.15em;">8. Grievance Redressal Officer</h2>
+                    <p class="text-sm md:text-base mb-3" style="color: var(--nv-text-muted); line-height: 1.8; font-weight: 300;">
+                        For complaints, copyright claims, or content moderation requests under IT Rules 2021:
+                    </p>
+                    <ul class="text-sm md:text-base space-y-2 pl-2" style="color: var(--nv-text-muted); line-height: 1.8; font-weight: 300;">
+                        <li>• <strong style="color: var(--nv-text-primary); font-weight: 500;">Grievance Officer:</strong> Vibhav Nigam, Founder</li>
+                        <li>• <strong style="color: var(--nv-text-primary); font-weight: 500;">Email:</strong> <a href="mailto:info@narrabrain.io" style="color: var(--nv-text-primary); text-decoration: underline; transition: color 0.3s;">info@narrabrain.io</a></li>
+                        <li>• <strong style="color: var(--nv-text-primary); font-weight: 500;">Subject Line:</strong> [GRIEVANCE REDRESSAL]</li>
+                        <li>• <strong style="color: var(--nv-text-primary); font-weight: 500;">Response Time:</strong> We commit to reviewing all complaints within 5 business days</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 class="mono text-xs mb-4" style="color: var(--nv-accent-brand); letter-spacing: 0.15em;">9. Dispute Resolution & Governing Law</h2>
+                    <p class="text-sm md:text-base" style="color: var(--nv-text-muted); line-height: 1.8; font-weight: 300;">
+                        These Terms are governed by the laws of India. Any disputes shall be resolved through binding arbitration under the Arbitration and Conciliation Act, 1996, with proceedings conducted in Mumbai. Both parties agree to arbitration as the sole remedy.
+                    </p>
+                </section>
+
+            </div>
+        </section>
+
+        <div class="dot animate-flow"></div>
+        <div class="flow-line animate-flow"></div>
+
+    </main>
+
+    <footer class="p-12 md:p-16 border-t glass-card rounded-none elevation-1" style="border-color: rgba(255, 255, 255, 0.08); background: rgba(18, 18, 20, 0.4);">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <p class="mono text-xs uppercase tracking-widest" style="color: var(--nv-accent-brand); margin: 0;">© 2026, Narrabrain Labs Pvt Ltd</p>
+            
+            <div class="flex flex-wrap justify-center gap-8 mono text-xs uppercase tracking-widest">
+                <a href="mailto:hello@narrabrain.io" class="transition-colors duration-300" style="color: var(--nv-text-muted); text-decoration: none; letter-spacing: 0.1em;">hello@narrabrain.io</a>
+                <a href="/privacy" class="transition-colors duration-300" style="color: var(--nv-text-muted); text-decoration: none; letter-spacing: 0.05em;">Privacy</a>
+                <a href="/terms" class="transition-colors duration-300" style="color: var(--nv-text-muted); text-decoration: none; letter-spacing: 0.05em;">Terms</a>
+            </div>
         </div>
+    </footer>
 
-        <footer class="mt-32 pt-12 border-t border-white/5 text-center">
-            <p class="mono text-[10px] text-cyan-500 uppercase tracking-widest">© 2026, Narrabrain Labs Pvt Ltd</p>
-        </footer>
-    </div>
 </body>
 </html>
