@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>narrabrain.studio | alpha console</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --nv-bg-canvas: #121214;
+            --nv-bg-surface: #1E1F22;
+            --nv-text-primary: #E3E5E8;
+            --nv-text-muted: #949BA4;
+        }
+        body { background-color: var(--nv-bg-canvas); color: var(--nv-text-primary); font-family: system-ui, sans-serif; }
+        .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+    </style>
+    
+    <script>
+        (function() {
+            const token = localStorage.getItem('alpha_session_token');
+            if (!token) {
+                window.location.replace('/alpha.html');
+                return;
+            }
+            
+            try {
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const payload = JSON.parse(window.atob(base64));
+                
+                const currentUnixTimestamp = Math.floor(Date.now() / 1000);
+                if (payload.exp && currentUnixTimestamp >= payload.exp) {
+                    alert("Alpha tester session frame expired.");
+                    localStorage.removeItem('alpha_session_token');
+                    window.location.replace('/alpha.html');
+                }
+            } catch (e) {
+                localStorage.removeItem('alpha_session_token');
+                window.location.replace('/alpha.html');
+            }
+        })();
+    </script>
+</head>
+<body class="p-8 md:p-12">
+
+    <header class="max-w-6xl mx-auto flex justify-between items-center mb-16 pb-6 border-b border-white/5">
+        <div class="text-lg lowercase font-medium tracking-tighter text-white">narrabrain.studio <span class="text-xs text-cyan-400 font-mono ml-2">[v9-alpha]</span></div>
+        <button onclick="terminateSession()" class="text-xs tracking-widest uppercase border border-white/10 hover:border-red-500/40 hover:text-red-400 px-4 py-2 rounded-full transition-all">
+            Terminate Session
+        </button>
+    </header>
+
+    <main class="max-w-6xl mx-auto">
+        <div class="glass-card p-10 md:p-14 rounded-[32px] mb-8">
+            <h1 class="text-3xl text-white font-serif italic mb-2">Synthesis Testing Matrix</h1>
+            <p class="text-sm mb-8" style="color: var(--nv-text-muted);">Direct secure node connection active.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-black/30 p-6 rounded-2xl border border-white/5">
+                    <p class="text-xs tracking-wider uppercase text-zinc-500 mb-1">Directorial Core</p>
+                    <p class="text-lg font-medium text-emerald-400">Online / Standby</p>
+                </div>
+                <div class="bg-black/30 p-6 rounded-2xl border border-white/5">
+                    <p class="text-xs tracking-wider uppercase text-zinc-500 mb-1">Temporal Graph</p>
+                    <p class="text-lg font-medium text-cyan-400">Active Node</p>
+                </div>
+                <div class="bg-black/30 p-6 rounded-2xl border border-white/5">
+                    <p class="text-xs tracking-wider uppercase text-zinc-500 mb-1">Alpha Progress</p>
+                    <p class="text-lg font-medium text-zinc-400">Authenticated</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function terminateSession() {
+            localStorage.removeItem('alpha_session_token');
+            window.location.href = '/alpha.html';
+        }
+    </script>
+</body>
+</html>
