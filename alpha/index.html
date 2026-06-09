@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>narrabrain.studio | alpha gate</title>
+    <title>narrabrain.io | alpha gate</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
@@ -51,11 +51,18 @@
             try {
                 const response = await fetch(API_URL, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ passkey })
+                    mode: 'cors',
+                    headers: { 
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ passkey: passkey })
                 });
 
-                const data = await response.json();
+                const textData = await response.text();
+                let data = {};
+                if (textData) {
+                    data = JSON.parse(textData);
+                }
 
                 if (!response.ok) {
                     throw new Error(data.error || 'Authentication rejected.');
@@ -68,7 +75,7 @@
                 window.location.href = '/alpha-dashboard';
 
             } catch (err) {
-                errorMsg.innerText = err.message;
+                errorMsg.innerText = err.message === 'Failed to fetch' ? 'Connection Refused (CORS Preflight Matrix Fault)' : err.message;
                 errorMsg.classList.remove('hidden');
                 submitBtn.innerText = "VALIDATE IDENTITY";
                 submitBtn.disabled = false;
