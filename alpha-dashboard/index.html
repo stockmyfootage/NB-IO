@@ -20,7 +20,7 @@
         (function() {
             const token = sessionStorage.getItem('alpha_session_token');
             if (!token) {
-                window.location.replace('/alpha.html');
+                window.location.replace('/alpha');
                 return;
             }
             
@@ -33,11 +33,11 @@
                 if (payload.exp && currentUnixTimestamp >= payload.exp) {
                     alert("Alpha tester session frame expired.");
                     sessionStorage.removeItem('alpha_session_token');
-                    window.location.replace('/alpha.html');
+                    window.location.replace('/alpha');
                 }
             } catch (e) {
                 sessionStorage.removeItem('alpha_session_token');
-                window.location.replace('/alpha.html');
+                window.location.replace('/alpha');
             }
         })();
     </script>
@@ -76,7 +76,7 @@
     <script>
         function terminateSession() {
             sessionStorage.removeItem('alpha_session_token');
-            window.location.href = '/alpha.html';
+            window.location.href = '/alpha';
         }
     </script>
 </body>
