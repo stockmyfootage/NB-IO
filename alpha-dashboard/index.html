@@ -18,7 +18,7 @@
     
     <script>
         (function() {
-            const token = localStorage.getItem('alpha_session_token');
+            const token = sessionStorage.getItem('alpha_session_token');
             if (!token) {
                 window.location.replace('/alpha.html');
                 return;
@@ -32,11 +32,11 @@
                 const currentUnixTimestamp = Math.floor(Date.now() / 1000);
                 if (payload.exp && currentUnixTimestamp >= payload.exp) {
                     alert("Alpha tester session frame expired.");
-                    localStorage.removeItem('alpha_session_token');
+                    sessionStorage.removeItem('alpha_session_token');
                     window.location.replace('/alpha.html');
                 }
             } catch (e) {
-                localStorage.removeItem('alpha_session_token');
+                sessionStorage.removeItem('alpha_session_token');
                 window.location.replace('/alpha.html');
             }
         })();
@@ -75,7 +75,7 @@
 
     <script>
         function terminateSession() {
-            localStorage.removeItem('alpha_session_token');
+            sessionStorage.removeItem('alpha_session_token');
             window.location.href = '/alpha.html';
         }
     </script>
