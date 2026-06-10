@@ -95,25 +95,11 @@
         }
 
         /* Elevation Shadows */
-        .elevation-0 {
-            box-shadow: none;
-        }
-
-        .elevation-1 {
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        }
-
-        .elevation-2 {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-        }
-
-        .elevation-3 {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-        }
-
-        .elevation-4 {
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
-        }
+        .elevation-0 { box-shadow: none; }
+        .elevation-1 { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); }
+        .elevation-2 { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); }
+        .elevation-3 { box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); }
+        .elevation-4 { box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6); }
 
         /* Flow Animations */
         .flow-line {
@@ -217,29 +203,6 @@
             color: var(--nv-text-muted);
         }
 
-        /* Badge Components */
-        .badge-status {
-            background-color: var(--nv-accent-success);
-            color: var(--nv-bg-canvas);
-            font-size: 10px;
-            font-weight: 600;
-            padding: 4px 8px;
-            border-radius: var(--radius-md);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .badge-warning {
-            background-color: var(--nv-accent-warning);
-            color: var(--nv-bg-canvas);
-            font-size: 10px;
-            font-weight: 600;
-            padding: 4px 8px;
-            border-radius: var(--radius-md);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
         /* Responsive Adjustments */
         @media (max-width: 768px) {
             .text-4xl { font-size: 28px; }
@@ -249,7 +212,6 @@
 </head>
 <body class="bg-mesh">
 
-    <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 px-6 md:px-12 py-6 flex justify-between items-center backdrop-blur-md border-b elevation-1" style="border-color: rgba(255, 255, 255, 0.08); background: rgba(18, 18, 20, 0.8);">
         <div class="brand-text text-lg" style="letter-spacing: -0.05em;">narrabrain.io</div>
         <div class="glass-card px-5 py-2 rounded-full mono text-xs tracking-widest font-bold" style="color: var(--nv-accent-brand);">stealth mode</div>
@@ -257,11 +219,9 @@
 
     <main class="pt-48 pb-20 px-6">
         
-        <!-- Hero Section -->
         <section class="max-w-4xl mx-auto text-center mb-16">
             <div class="mb-12" style="opacity: 0.9;">
                 <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto" style="margin-bottom: 48px;">
-                    <!-- Simplified Narrabrain Logo Placeholder -->
                     <circle cx="60" cy="60" r="55" fill="none" stroke="var(--nv-accent-brand)" stroke-width="2" opacity="0.3"/>
                     <circle cx="60" cy="60" r="40" fill="none" stroke="var(--nv-accent-brand)" stroke-width="1.5" opacity="0.5"/>
                     <circle cx="60" cy="60" r="25" fill="var(--nv-accent-brand)" opacity="0.8"/>
@@ -280,7 +240,6 @@
         <div class="dot animate-flow"></div>
         <div class="flow-line animate-flow"></div>
 
-        <!-- Stage 01: Ingestion -->
         <section class="max-w-3xl mx-auto mb-8">
             <div class="glass-card p-12 rounded-lg elevation-2" style="border-radius: 24px;">
                 <span class="mono text-xs" style="color: var(--nv-accent-brand); display: block; margin-bottom: 24px; letter-spacing: 0.2em;">Stage 01: Ingestion</span>
@@ -296,12 +255,11 @@
 
         <div class="flow-line"></div>
 
-        <!-- Stage 02: Interpretation & Architecture -->
-        <section class="max-w-5xl mx-auto mb-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <section class="max-w-3xl mx-auto mb-8">
             <div class="glass-card p-12 rounded-lg elevation-2" style="border-radius: 24px; border-left: 4px solid rgba(71, 123, 255, 0.4);">
                 <span class="mono text-xs" style="color: var(--nv-accent-brand); display: block; margin-bottom: 16px; letter-spacing: 0.2em;">Stage 02: Interpretation</span>
                 
-                <h3 class="text-xl display-title mb-4" style="font-weight: 500;">Contextual Logic Core (SCLC)</h3>
+                <h3 class="text-2xl display-title mb-4" style="font-weight: 500;">Contextual Logic Core (SCLC)</h3>
                 <p class="text-sm md:text-base" style="color: var(--nv-text-muted); line-height: 1.6; font-weight: 300;">
                     The reasoning engine that decouples subjective intent from visual content, mapping requests across cinematic pillars.
                 </p>
@@ -310,7 +268,6 @@
 
         <div class="flow-line"></div>
 
-        <!-- Stage 03: Intent Alignment -->
         <section class="max-w-3xl mx-auto mb-8">
             <div class="glass-card p-12 rounded-lg elevation-2" style="border-radius: 24px; border: 1px dashed rgba(71, 123, 255, 0.3);">
                 <span class="mono text-xs" style="color: var(--nv-accent-brand); display: block; margin-bottom: 24px; text-align: center; letter-spacing: 0.2em;">Stage 03: Intent Alignment</span>
@@ -331,7 +288,6 @@
 
         <div class="flow-line"></div>
 
-        <!-- Stage 04: Fulfillment -->
         <section class="max-w-3xl mx-auto mb-16">
             <div class="glass-card p-12 rounded-lg elevation-2" style="border-radius: 24px; border-top: 4px solid rgba(255, 255, 255, 0.1);">
                 <span class="mono text-xs" style="color: var(--nv-accent-brand); display: block; margin-bottom: 24px; text-align: center; letter-spacing: 0.2em;">Stage 04: Fulfillment</span>
@@ -339,19 +295,19 @@
                 <h3 class="text-2xl display-title mb-8 text-center" style="font-weight: 500;">Deterministic Matching</h3>
                 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-                    <div elevation-1 style="background: var(--nv-bg-element); padding: 16px; border-radius: 16px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);">
+                    <div style="background: var(--nv-bg-element); padding: 16px; border-radius: 16px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);">
                         <p class="text-xs mono" style="color: var(--nv-text-muted); margin: 0 0 8px 0; letter-spacing: 0.05em;">focal</p>
                         <p class="text-base display-title" style="margin: 0; font-weight: 500;">35mm</p>
                     </div>
-                    <div elevation-1 style="background: var(--nv-bg-element); padding: 16px; border-radius: 16px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);">
+                    <div style="background: var(--nv-bg-element); padding: 16px; border-radius: 16px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);">
                         <p class="text-xs mono" style="color: var(--nv-text-muted); margin: 0 0 8px 0; letter-spacing: 0.05em;">aperture</p>
                         <p class="text-base display-title" style="margin: 0; font-weight: 500;">f/1.8</p>
                     </div>
-                    <div elevation-1 style="background: var(--nv-bg-element); padding: 16px; border-radius: 16px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);">
+                    <div style="background: var(--nv-bg-element); padding: 16px; border-radius: 16px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);">
                         <p class="text-xs mono" style="color: var(--nv-text-muted); margin: 0 0 8px 0; letter-spacing: 0.05em;">motion</p>
                         <p class="text-base display-title" style="margin: 0; font-weight: 500;">kinetic</p>
                     </div>
-                    <div elevation-1 style="background: var(--nv-bg-element); padding: 16px; border-radius: 16px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);">
+                    <div style="background: var(--nv-bg-element); padding: 16px; border-radius: 16px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);">
                         <p class="text-xs mono" style="color: var(--nv-text-muted); margin: 0 0 8px 0; letter-spacing: 0.05em;">mood</p>
                         <p class="text-base display-title" style="margin: 0; font-weight: 500;">cold</p>
                     </div>
@@ -364,7 +320,6 @@
         <div class="dot animate-flow"></div>
         <div class="flow-line animate-flow"></div>
 
-        <!-- Founder Section -->
         <section class="max-w-5xl mx-auto my-32">
             <div class="glass-card p-12 md:p-16 rounded-lg elevation-3" style="border-radius: 32px; overflow: hidden;">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -394,7 +349,6 @@
             </div>
         </section>
 
-        <!-- CTA Section with Alpha Test Button -->
         <section class="max-w-md mx-auto mt-20">
             <div class="glass-card p-12 md:p-16 rounded-lg elevation-3" style="border-radius: 32px; border-top: 4px solid var(--nv-accent-brand);">
                 <h3 class="text-2xl display-title text-center mb-10" style="font-weight: 500; letter-spacing: -0.02em;">join the waitlist</h3>
@@ -434,10 +388,9 @@
                     </button>
                 </form>
 
-                <!-- Alpha Test Button -->
                 <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
                     <a 
-                        href="/alpha" 
+                        href="/alpha.html" 
                         target="_blank"
                         rel="noopener noreferrer"
                         class="btn-secondary w-full py-4 rounded-lg text-xs font-bold uppercase tracking-widest block text-center"
@@ -450,7 +403,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="p-12 md:p-16 border-t glass-card rounded-none elevation-1" style="border-color: rgba(255, 255, 255, 0.08); background: rgba(18, 18, 20, 0.4);">
         <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <p class="mono text-xs uppercase tracking-widest" style="color: var(--nv-accent-brand); margin: 0;">© 2026, Narrabrain Labs Pvt Ltd</p>
