@@ -81,7 +81,7 @@
                 throw new Error('No token received from server');
             }
             
-            localStorage.setItem('alpha_session_token', data.token);
+            sessionStorage.setItem('alpha_session_token', data.token);
             window.location.href = '/alpha-dashboard.html';
 
         } catch (err) {
