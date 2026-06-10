@@ -16,92 +16,34 @@
         .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
     </style>
 </head>
+<body class="flex flex-col min-h-screen">
+
     <nav class="fixed top-0 w-full z-50 px-6 md:px-12 py-6 flex justify-between items-center backdrop-blur-md border-b elevation-1" style="border-color: rgba(255, 255, 255, 0.08); background: rgba(18, 18, 20, 0.8);">
         <a href="/" class="brand-text text-lg" style="letter-spacing: -0.05em; text-decoration: none;">narrabrain.io</a>
         <a href="/" class="glass-card px-5 py-2 rounded-full mono text-xs tracking-widest font-bold transition-all duration-300 hover:text-white" style="color: var(--nv-accent-brand); text-decoration: none;">
             ← back to site
         </a>
     </nav>
-<body class="flex items-center justify-center min-h-screen px-6">
 
-    <div class="w-full max-w-md glass-card p-10 rounded-[32px] text-center">
-        <span class="text-[10px] uppercase tracking-[0.2em] block mb-4 text-cyan-400 font-mono">Environment Verification</span>
-        <h2 class="text-white text-3xl font-medium mb-8 tracking-tight font-serif italic">Alpha Sandbox Gate</h2>
-        
-        <form id="gate-form" class="space-y-6">
-            <input type="password" id="passkey-input" placeholder="enter environment passkey" required 
-                   class="w-full border rounded-2xl p-5 text-sm text-white focus:border-cyan-500 bg-black/40 border-zinc-800 outline-none text-center">
+    <main class="flex-1 flex items-center justify-center px-6 pt-28 pb-12">
+        <div class="w-full max-w-md glass-card p-10 rounded-[32px] text-center">
+            <span class="text-[10px] uppercase tracking-[0.2em] block mb-4 text-cyan-400 font-mono">Environment Verification</span>
+            <h2 class="text-white text-3xl font-medium mb-8 tracking-tight font-serif italic">Alpha Sandbox Gate</h2>
             
-            <div id="error-msg" class="text-xs text-red-400 hidden italic"></div>
-            
-            <button type="submit" id="submit-btn" class="w-full bg-white text-black py-5 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-cyan-400 transition-all">
-                Validate Identity
-            </button>
-        </form>
-    </div>
-<script>
-    const API_URL = 'https://4co4fs4xn5.execute-api.eu-north-1.amazonaws.com/validate';
-
-    document.getElementById('gate-form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const passkey = document.getElementById('passkey-input').value;
-        const errorMsg = document.getElementById('error-msg');
-        const submitBtn = document.getElementById('submit-btn');
-
-        errorMsg.classList.add('hidden');
-        submitBtn.innerText = "VERIFYING...";
-        submitBtn.disabled = true;
-
-        try {
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                mode: 'cors',
-                headers: { 
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ passkey: passkey })
-            });
-
-            let data = {};
-            
-            // Parse response body
-            try {
-                const textData = await response.text();
-                console.log('Response status:', response.status);
-                console.log('Response body:', textData); // Debug log
+            <form id="gate-form" class="space-y-6">
+                <input type="password" id="passkey-input" placeholder="enter environment passkey" required 
+                       class="w-full border rounded-2xl p-5 text-sm text-white focus:border-cyan-500 bg-black/40 border-zinc-800 outline-none text-center">
                 
-                if (textData) {
-                    data = JSON.parse(textData);
-                }
-            } catch (parseErr) {
-                throw new Error(`Failed to parse server response: ${parseErr.message}`);
-            }
+                <div id="error-msg" class="text-xs text-red-400 hidden italic"></div>
+                
+                <button type="submit" id="submit-btn" class="w-full bg-white text-black py-5 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-cyan-400 transition-all">
+                    Validate Identity
+                </button>
+            </form>
+        </div>
+    </main>
 
-            // Check if request was successful
-            if (!response.ok) {
-                throw new Error(data.error || `Server returned ${response.status}`);
-            }
-
-            // Store token and redirect
-            if (!data.token) {
-                throw new Error('No token received from server');
-            }
-            
-            sessionStorage.setItem('alpha_session_token', data.token);
-            window.location.href = '/alpha-dashboard';
-
-        } catch (err) {
-            console.error('Auth error:', err); // Debug log
-            errorMsg.innerText = err.message || 'Verification failed. Check console for details.';
-            errorMsg.classList.remove('hidden');
-            submitBtn.innerText = "VALIDATE IDENTITY";
-            submitBtn.disabled = false;
-        }
-    });
-</script>
-</main>
- <!-- Footer -->
-    <footer class="p-12 md:p-16 border-t glass-card rounded-none elevation-1" style="border-color: rgba(255, 255, 255, 0.08); background: rgba(18, 18, 20, 0.4);">
+    <footer class="p-12 md:p-16 border-t glass-card rounded-none elevation-1 w-full" style="border-color: rgba(255, 255, 255, 0.08); background: rgba(18, 18, 20, 0.4);">
         <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <p class="mono text-xs uppercase tracking-widest" style="color: var(--nv-accent-brand); margin: 0;">© 2026, Narrabrain Labs Pvt Ltd</p>
             
@@ -112,6 +54,63 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const API_URL = 'https://4co4fs4xn5.execute-api.eu-north-1.amazonaws.com/validate';
+
+        document.getElementById('gate-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const passkey = document.getElementById('passkey-input').value;
+            const errorMsg = document.getElementById('error-msg');
+            const submitBtn = document.getElementById('submit-btn');
+
+            errorMsg.classList.add('hidden');
+            submitBtn.innerText = "VERIFYING...";
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: { 
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ passkey: passkey })
+                });
+
+                let data = {};
+                
+                try {
+                    const textData = await response.text();
+                    console.log('Response status:', response.status);
+                    console.log('Response body:', textData);
+                    
+                    if (textData) {
+                        data = JSON.parse(textData);
+                    }
+                } catch (parseErr) {
+                    throw new Error(`Failed to parse server response: ${parseErr.message}`);
+                }
+
+                if (!response.ok) {
+                    throw new Error(data.error || `Server returned ${response.status}`);
+                }
+
+                if (!data.token) {
+                    throw new Error('No token received from server');
+                }
+                
+                sessionStorage.setItem('alpha_session_token', data.token);
+                window.location.href = '/alpha-dashboard';
+
+            } catch (err) {
+                console.error('Auth error:', err);
+                errorMsg.innerText = err.message || 'Verification failed. Check console for details.';
+                errorMsg.classList.remove('hidden');
+                submitBtn.innerText = "VALIDATE IDENTITY";
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
 </body>
-    
 </html>
