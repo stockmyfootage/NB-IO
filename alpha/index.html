@@ -33,54 +33,66 @@
             </button>
         </form>
     </div>
+<script>
+    const API_URL = 'https://4co4fs4xn5.execute-api.eu-north-1.amazonaws.com/validate';
 
-    <script>
-        // Linked directly to your active AWS HTTP Gateway instance
-        const API_URL = 'https://4co4fs4xn5.execute-api.eu-north-1.amazonaws.com/validate';
+    document.getElementById('gate-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const passkey = document.getElementById('passkey-input').value;
+        const errorMsg = document.getElementById('error-msg');
+        const submitBtn = document.getElementById('submit-btn');
 
-        document.getElementById('gate-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const passkey = document.getElementById('passkey-input').value;
-            const errorMsg = document.getElementById('error-msg');
-            const submitBtn = document.getElementById('submit-btn');
+        errorMsg.classList.add('hidden');
+        submitBtn.innerText = "VERIFYING...";
+        submitBtn.disabled = true;
 
-            errorMsg.classList.add('hidden');
-            submitBtn.innerText = "VERIFYING...";
-            submitBtn.disabled = true;
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                mode: 'cors',
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ passkey: passkey })
+            });
 
+            let data = {};
+            
+            // Parse response body
             try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    mode: 'cors',
-                    headers: { 
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ passkey: passkey })
-                });
-
                 const textData = await response.text();
-                let data = {};
+                console.log('Response status:', response.status);
+                console.log('Response body:', textData); // Debug log
+                
                 if (textData) {
                     data = JSON.parse(textData);
                 }
-
-                if (!response.ok) {
-                    throw new Error(data.error || 'Authentication rejected.');
-                }
-
-                // Drops the encrypted cloud key securely into browser cache
-                localStorage.setItem('alpha_session_token', data.token);
-                
-                // Advance inside to your private dashboard asset
-                window.location.href = '/alpha-dashboard';
-
-            } catch (err) {
-                errorMsg.innerText = err.message === 'Failed to fetch' ? 'Connection Refused (CORS Preflight Matrix Fault)' : err.message;
-                errorMsg.classList.remove('hidden');
-                submitBtn.innerText = "VALIDATE IDENTITY";
-                submitBtn.disabled = false;
+            } catch (parseErr) {
+                throw new Error(`Failed to parse server response: ${parseErr.message}`);
             }
-        });
-    </script>
+
+            // Check if request was successful
+            if (!response.ok) {
+                throw new Error(data.error || `Server returned ${response.status}`);
+            }
+
+            // Store token and redirect
+            if (!data.token) {
+                throw new Error('No token received from server');
+            }
+            
+            localStorage.setItem('alpha_session_token', data.token);
+            window.location.href = '/alpha-dashboard.html';
+
+        } catch (err) {
+            console.error('Auth error:', err); // Debug log
+            errorMsg.innerText = err.message || 'Verification failed. Check console for details.';
+            errorMsg.classList.remove('hidden');
+            submitBtn.innerText = "VALIDATE IDENTITY";
+            submitBtn.disabled = false;
+        }
+    });
+</script>
+
 </body>
 </html>
